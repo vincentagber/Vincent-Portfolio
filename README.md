@@ -1,5 +1,5 @@
 # My Portfolio
-### Portfolio Responsive Complete
+### Responsive Portfolio 
 
 - Responsive Personal Portfolio Website HTML CSS & JavaScript.
 - Contains animations when scrolling.
