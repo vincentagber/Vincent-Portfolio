@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vincent Agber - Frontend Developer, WordPress Expert, and Digital Solutionist. Discover my portfolio of world-class web projects.">
+    <meta name="keywords" content="frontend developer, WordPress expert, web development, portfolio, Vincent Agber">
+    <meta name="author" content="Vincent Agber">
+    <meta name="robots" content="index, follow">
+    <title>Vincent Agber | Frontend Developer Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts for Elegant Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #c5a147; /* Deeper gold for professionalism */
+            --primary-dark: #a88c3b;
+            --secondary-color: #e8e8e8; /* Softer ivory for contrast */
+            --text-color: #ffffff;
+            --bg-color: #0a0a0a; /* Deep black for elegance */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'EB Garamond', serif;
+            --font-secondary: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 80px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 0;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 200px;
+        }
+
+        .sidebar .logo {
+            margin-bottom: 3rem;
+        }
+
+        .sidebar .logo img {
+            width: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar:hover .logo img {
+            transform: rotate(360deg);
+        }
+
+        .sidebar .logo span {
+            display: none;
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+
+        .sidebar:hover .logo span {
+            display: inline;
+        }
+
+        .sidebar .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .sidebar .nav-links a {
+            color: var(--secondary-color);
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar:hover .nav-links a {
+            opacity: 1;
+        }
+
+        .sidebar .nav-links a i {
+            font-size: 1.5rem;
+        }
+
+        .sidebar .nav-links a span {
+            display: none;
+            margin-left: 1rem;
+        }
+
+        .sidebar:hover .nav-links a span {
+            display: inline;
+        }
+
+        .sidebar .nav-links a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 80px;
+            padding: 0;
+        }
+
+        /* Hero Section with Parallax Effect */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/assets/images/intro.jpg') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8));
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-family: var(--font-body);
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, var(--primary-color), #e3c66c);
+            color: #000;
+            border: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background: var(--primary-dark);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        #about {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #6c6b6b 0%, #2c2c2c 100%);
+            position: relative;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            max-width: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text p {
+            font-family: var(--font-body);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--secondary-color);
+        }
+
+        .about-image {
+            position: relative;
+            max-width: 40%;
+            z-index: 0;
+        }
+
+        .about-image img {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            background: url('/assets/images/intro.jpg') no-repeat;
+            background-size: contain;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background: url('/assets/images/intro.jpg') no-repeat;
+            background-size: contain;
+            z-index: -1;
+            opacity: 0.3;
+            transform: rotate(180deg);
+        }
+
+        /* Tech Stack Section */
+        .tech-stack {
+            padding: 5rem 0;
+            background: #0a0a0a;
+        }
+
+        .tech-stack-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tech-stack-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-stack-item:hover {
+            transform: scale(1.1);
+        }
+
+        .tech-stack-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        .tech-stack-item span {
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Skills Section */
+        .skills-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .skills-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--primary-dark);
+        }
+
+        .skills-box i {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills-box h5 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+        }
+
+        .skills-box p {
+            font-family: var(--font-secondary);
+            color: var(--secondary-color);
+        }
+
+        /* Experience Section */
+        .timeline ul {
+            padding-left: 0;
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline li {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .timeline li:hover {
+            border-left-color: var(--primary-dark);
+            transform: translateX(10px);
+        }
+
+        .timeline li p {
+            font-family: var(--font-secondary);
+            color: var(--secondary-color);
+        }
+
+        /* Projects Section */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary-color);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay a {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .project-overlay a:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .project-card h5 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        .project-card p {
+            font-family: var(--font-secondary);
+            color: var(--secondary-color);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .testimonial-card p {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card h6 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+        }
+
+        /* Featured In Section */
+        .featured-in {
+            padding: 3rem 0;
+            background: #0a0a0a;
+        }
+
+        .featured-in-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .featured-in-grid img {
+            height: 40px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .featured-in-grid img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+        }
+
+        #contact p {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        #contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: #101010;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+        }
+
+        footer i {
+            font-size: 1.8rem;
+            margin: 0 1rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        footer i:hover {
+            color: var(--primary-dark);
+        }
+
+        footer p {
+            font-family: var(--font-secondary);
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="/assets/images/logo.png" alt="Vincent Agber Logo">
+            <span>Vincent Agber</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" title="Home"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="#about" title="About"><i class="fas fa-user"></i><span>About</span></a>
+            <a href="#tech-stack" title="Tech Stack"><i class="fas fa-tools"></i><span>Tech Stack</span></a>
+            <a href="#skills" title="Skills"><i class="fas fa-code"></i><span>Skills</span></a>
+            <a href="#experience" title="Experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+            <a href="#projects" title="Projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+            <a href="#testimonials" title="Testimonials"><i class="fas fa-quote-left"></i><span>Testimonials</span></a>
+            <a href="#contact" title="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Vincent Agber</h1>
+                <p>Frontend Developer | WordPress Expert | Digital Solutionist</p>
+                <a href="#contact" class="btn btn-gold">Let's Collaborate</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello, I’m Vincent Agber—a passionate frontend developer with over 5 years of experience crafting functional, visually stunning websites and applications. My expertise spans HTML, CSS, JavaScript, React.js, and custom WordPress development. I’m dedicated to building scalable, secure, and user-centric digital experiences that leave a lasting impression.<br>In Digital Marketing, I bring a strategic approach to Facebook Advertising and Google Ads, utilizing these platforms to
+                        craft compelling campaigns that resonate with target audiences.
+                        As a Web Developer, I am dedicated to the art and science of creating engaging and functional online experiences. From
+                        conceptualization to execution, I've honed my Web Design and Development skills to deliver websites that meet and exceed
+                        client expectations.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="/assets/images/vincent.png" alt="Vincent Agber" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="tech-stack" id="tech-stack">
+            <div class="container">
+                <h2 class="section-title">My Tech Stack</h2>
+                <div class="tech-stack-grid">
+                    <div class="tech-stack-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fab fa-react"></i>
+                        <span>React.js</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fab fa-wordpress"></i>
+                        <span>WordPress</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fab fa-php"></i>
+                        <span>PHP</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fas fa-database"></i>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="tech-stack-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="py-5" id="skills" style="background: #0a0a0a;">
+            <div class="container">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="skills-box">
+                            <i class="fas fa-code"></i>
+                            <h5>Frontend Development</h5>
+                            <p>HTML, CSS, JS, React</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="skills-box">
+                            <i class="fas fa-database"></i>
+                            <h5>Backend</h5>
+                            <p>PHP, MySQL, APIs</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="skills-box">
+                            <i class="fab fa-wordpress"></i>
+                            <h5>WordPress</h5>
+                            <p>Custom Themes & Plugins</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="skills-box">
+                            <i class="fas fa-shield-alt"></i>
+                            <h5>Security & SEO</h5>
+                            <p>SEO, Cybersecurity, Analytics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="py-5" id="experience" style="background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+                    <ul>
+                        <li><p>IT Support - Affordable Cars Ltd (2022 - 2023)</p></li>
+                        <li><p>IT Manager - Clearedge Media Ltd (2020 - 2022)</p></li>
+                        <li><p>Web Developer - DSM-Properties Ltd (2019 - 2020)</p></li>
+                        <li><p>Branch Manager - Webcity Online (2018 - 2019)</p></li>
+                        <li><p>Supervisor - Sure-Stream Resources (2016 - 2018)</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="py-5" id="projects" style="background: #0a0a0a;">
+            <div class="container">
+                <h2 class="section-title">Recent Projects</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="project-card">
+                            <img src="https://source.unsplash.com/400x250/?printing" alt="PrintExpress">
+                            <div class="project-overlay">
+                                <a href="#">View Project</a>
+                            </div>
+                            <div class="p-3">
+                                <h5>PrintExpress.ng</h5>
+                                <p>A modern print ordering platform built to improve user retention and simplify UX. Increased repeat visits by 30%.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="project-card">
+                            <img src="https://source.unsplash.com/400x250/?travel" alt="PecaStravels">
+                            <div class="project-overlay">
+                                <a href="#">View Project</a>
+                            </div>
+                            <div class="p-3">
+                                <h5>PecaStravels.com</h5>
+                                <p>Built for a luxury travel agency. SEO-optimized and mobile-friendly. Traffic up by 50% in 3 months.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="project-card">
+                            <img src="https://source.unsplash.com/400x250/?industry" alt="Caspian Refinery">
+                            <div class="project-overlay">
+                                <a href="#">View Project</a>
+                            </div>
+                            <div class="p-3">
+                                <h5>CaspianRefinery.kz</h5>
+                                <p>Enterprise-grade redesign of a Kazakh refinery company website. Focused on international appeal and performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Clients Say</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p>"Vincent delivered an exceptional website for our travel agency. His attention to detail and expertise in SEO doubled our traffic in just three months!"</p>
+                            <h6>— Sarah Thompson, PecaStravels</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p>"Working with Vincent was a pleasure. He transformed our outdated website into a modern, user-friendly platform that significantly improved our user retention."</p>
+                            <h6>— Michael Okoro, PrintExpress</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testimonial-card">
+                            <p>"Vincent’s expertise in web development and cybersecurity gave us confidence in our new site. His work is truly world-class."</p>
+                            <h6>— Aisha Khan, Caspian Refinery</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured In Section -->
+        <section class="featured-in" id="featured-in">
+            <div class="container">
+                <h2 class="section-title">Featured In</h2>
+                <div class="featured-in-grid">
+                    <img src="https://via.placeholder.com/150x40?text=TechCrunch" alt="TechCrunch">
+                    <img src="https://via.placeholder.com/150x40?text=Forbes" alt="Forbes">
+                    <img src="https://via.placeholder.com/150x40?text=Smashing+Magazine" alt="Smashing Magazine">
+                    <img src="https://via.placeholder.com/150x40?text=Awwwards" alt="Awwwards">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-5" id="contact">
+            <div class="container text-center">
+                <h2 class="section-title">Let's Collaborate</h2>
+                <p>Open to freelance, contract, or full-time roles. Let's create something extraordinary.</p>
+                <div class="mt-4">
+                    <a href="/assets/Vincent Agber.pdf" class="btn btn-gold" download>Download My CV</a>
+                    <p class="mt-3">Email: <a href="mailto:vincentagber74@gmail.com">vincentagber74@gmail.com</a> | Phone: <a href="tel:+2348177148582">+2348177148582</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="container">
+                <p>Connect With Me</p>
+                <div class="social-links">
+                    <a href="https://github.com/vincentagber"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/agbervincent"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://facebook.com/vincentagber"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/superlink.it"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="mt-3">© 2025 Vincent Agber. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section Parallax
+        gsap.to('.hero-bg', {
+            scrollTrigger: {
+                trigger: '.hero',
+                scrub: true,
+                start: 'top top',
+                end: 'bottom top'
+            },
+            y: '20%',
+            ease: 'none'
+        });
+
+        // Hero Section Animation
+        gsap.from('.hero-content h1', {
+            opacity: 0,
+            y: 50,
+            duration: 1.5,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-content p', {
+            opacity: 0,
+            y: 50,
+            duration: 1.5,
+            delay: 0.5,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.hero-content .btn-gold', {
+            opacity: 0,
+            scale: 0.8,
+            duration: 1,
+            delay: 1,
+            ease: 'back.out(1.7)'
+        });
+
+        // Section Animations
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Tech Stack Animation
+        gsap.utils.toArray('.tech-stack-item').forEach(item => {
+            gsap.from(item, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Testimonial Animation
+        gsap.utils.toArray('.testimonial-card').forEach((card, index) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+    </script>
+</body>
+</html>
