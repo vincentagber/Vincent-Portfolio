@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vincent Agber - Frontend Developer, WordPress Expert, and Digital Solutionist. Discover my portfolio of world-class web projects.">
-    <meta name="keywords" content="frontend developer, WordPress expert, web development, portfolio, Vincent Agber">
+    <meta name="description"
+        content="Vincent Agber - Full-Stack Developer, WordPress Expert, and Digital Solutionist. Discover my portfolio of innovative web projects.">
+    <meta name="keywords" content="full-stack developer, WordPress expert, web development, portfolio, Vincent Agber">
     <meta name="author" content="Vincent Agber">
     <meta name="robots" content="index, follow">
-    <title>Vincent Agber | Frontend Developer Portfolio</title>
+    <title>Vincent Agber | Full-Stack Developer Portfolio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- GSAP for Advanced Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Three.js for 3D Hero Section -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanilla Tilt for 3D Tilt Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts for Elegant Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=EB+Garamond:wght@400;700&family=Inter:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary-color: #c5a147; /* Deeper gold for professionalism */
+            --primary-color: #c5a147;
+            /* Deeper gold */
             --primary-dark: #a88c3b;
-            --secondary-color: #e8e8e8; /* Softer ivory for contrast */
+            --secondary-color: #e8e8e8;
+            /* Softer ivory */
             --text-color: #ffffff;
-            --bg-color: #0a0a0a; /* Deep black for elegance */
+            --bg-color: #0a0a0a;
+            /* Deep black */
+            --nav-bg: #4b0082;
+            /* Deep purple */
+            --gradient: linear-gradient(45deg, #c5a147, #4b0082);
+            /* Gold to purple gradient */
             --font-heading: 'Playfair Display', serif;
             --font-body: 'EB Garamond', serif;
             --font-secondary: 'Inter', sans-serif;
@@ -43,99 +58,77 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Sidebar Navigation */
-        .sidebar {
+        /* Custom Cursor */
+        .custom-cursor {
             position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 80px;
-            background: #6f00ab;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease, background 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        .custom-cursor.hovered {
+            transform: scale(2);
+            background: var(--secondary-color);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--nav-bg);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
             z-index: 1000;
-            transition: width 0.3s ease;
+            transition: background 0.3s ease;
         }
 
-        .sidebar:hover {
-            width: 200px;
-        }
-
-        .sidebar .logo {
-            margin-bottom: 3rem;
-        }
-
-        .sidebar .logo img {
-            width: 50px;
+        .navbar-brand img {
+            height: 40px;
             transition: transform 0.3s ease;
         }
 
-        .sidebar:hover .logo img {
-            transform: rotate(360deg);
+        .navbar-brand img:hover {
+            transform: scale(1.1);
         }
 
-        .sidebar .logo span {
-            display: none;
-            font-family: var(--font-heading);
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-left: 1rem;
-        }
-
-        .sidebar:hover .logo span {
-            display: inline;
-        }
-
-        .sidebar .nav-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .sidebar .nav-links a {
-            color: var(--secondary-color);
+        .navbar-nav .nav-link {
             font-family: var(--font-secondary);
+            color: var(--secondary-color);
             font-size: 1rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            opacity: 0.7;
-            transition: all 0.3s ease;
+            margin: 0 1rem;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        .sidebar:hover .nav-links a {
-            opacity: 1;
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
         }
 
-        .sidebar .nav-links a i {
-            font-size: 1.5rem;
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
         }
 
-        .sidebar .nav-links a span {
-            display: none;
-            margin-left: 1rem;
-        }
-
-        .sidebar:hover .nav-links a span {
-            display: inline;
-        }
-
-        .sidebar .nav-links a:hover {
+        .navbar-nav .nav-link:hover {
             color: var(--primary-color);
-            opacity: 1;
         }
 
         /* Main Content */
         .main-content {
-            margin-left: 80px;
-            padding: 0;
+            padding-top: 70px;
         }
 
-        /* Hero Section with Parallax Effect */
+        /* Hero Section with 3D Particles */
         .hero {
             height: 100vh;
             position: relative;
@@ -146,13 +139,12 @@
             overflow: hidden;
         }
 
-        .hero-bg {
+        #hero-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/assets/images/intro.jpg') center/cover no-repeat;
             z-index: -1;
         }
 
@@ -166,25 +158,15 @@
             z-index: 0;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            z-index: 1;
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
+            padding: 0 1rem;
         }
 
         .hero h1 {
             font-family: var(--font-heading);
-            font-size: 5.5rem;
+            font-size: 4.5rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 1rem;
@@ -193,25 +175,25 @@
 
         .hero p {
             font-family: var(--font-body);
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--secondary-color);
             margin-bottom: 2rem;
         }
 
         .btn-gold {
-            background: linear-gradient(45deg, var(--primary-color), #e3c66c);
-            color: #000;
+            background: var(--gradient);
+            color: #fff;
             border: none;
             font-family: var(--font-heading);
             font-weight: 600;
             padding: 1rem 2rem;
             border-radius: 50px;
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
         .btn-gold:hover {
             background: var(--primary-dark);
-            color: #fff;
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
@@ -219,19 +201,23 @@
         /* Section Titles */
         .section-title {
             font-family: var(--font-heading);
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
         }
 
+        .section-title .char {
+            display: inline-block;
+        }
+
         .section-title::after {
             content: '';
             position: absolute;
-            width: 100px;
+            width: 80px;
             height: 3px;
-            background: var(--primary-color);
+            background: var(--gradient);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
@@ -239,8 +225,8 @@
 
         /* About Section */
         #about {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #6c6b6b 0%, #2c2c2c 100%);
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
             position: relative;
         }
 
@@ -251,6 +237,8 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
 
         .about-text {
@@ -261,7 +249,7 @@
 
         .about-text p {
             font-family: var(--font-body);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             color: var(--secondary-color);
         }
@@ -277,6 +265,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.5s ease;
             border: 2px solid var(--primary-color);
+            width: 100%;
         }
 
         .about-image:hover img {
@@ -286,11 +275,11 @@
         .about-image::before {
             content: '';
             position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 150px;
-            height: 150px;
-            background: url('/assets/images/intro.jpg') no-repeat;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            background: url('/assets/images/gold-frame.png') no-repeat;
             background-size: contain;
             z-index: -1;
             opacity: 0.3;
@@ -299,53 +288,71 @@
         .about-image::after {
             content: '';
             position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 150px;
-            height: 150px;
-            background: url('/assets/images/intro.jpg') no-repeat;
+            bottom: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: url('/assets/images/gold-frame.png') no-repeat;
             background-size: contain;
             z-index: -1;
             opacity: 0.3;
             transform: rotate(180deg);
         }
 
-        /* Tech Stack Section */
+        /* Tech Stack Section with SVG Animation */
         .tech-stack {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: #0a0a0a;
+            position: relative;
         }
 
-        .tech-stack-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
+        .tech-stack-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
             margin: 0 auto;
         }
 
         .tech-stack-item {
+            position: absolute;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
             transition: transform 0.3s ease;
         }
 
         .tech-stack-item:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
         .tech-stack-item i {
-            font-size: 3rem;
+            font-size: 2rem;
             color: var(--primary-color);
         }
 
         .tech-stack-item span {
             font-family: var(--font-secondary);
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--secondary-color);
+            text-align: center;
+        }
+
+        svg.tech-stack-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .tech-stack-svg path {
+            stroke: var(--primary-color);
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
         }
 
         /* Skills Section */
@@ -366,18 +373,25 @@
 
         .skills-box i {
             color: var(--primary-color);
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skills-box:hover i {
+            transform: rotate(360deg);
         }
 
         .skills-box h5 {
             font-family: var(--font-heading);
             color: var(--primary-color);
+            font-size: 1.5rem;
         }
 
         .skills-box p {
             font-family: var(--font-secondary);
             color: var(--secondary-color);
+            font-size: 1rem;
         }
 
         /* Experience Section */
@@ -405,9 +419,10 @@
         .timeline li p {
             font-family: var(--font-secondary);
             color: var(--secondary-color);
+            font-size: 1rem;
         }
 
-        /* Projects Section */
+        /* Projects Section with Tilt Effect */
         .project-card {
             position: relative;
             overflow: hidden;
@@ -415,11 +430,6 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--primary-color);
             transition: all 0.4s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
 
         .project-card img {
@@ -459,6 +469,7 @@
             padding: 0.5rem 1rem;
             border-radius: 50px;
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
         .project-overlay a:hover {
@@ -470,16 +481,18 @@
             font-family: var(--font-heading);
             color: var(--primary-color);
             margin-top: 1rem;
+            font-size: 1.5rem;
         }
 
         .project-card p {
             font-family: var(--font-secondary);
             color: var(--secondary-color);
+            font-size: 1rem;
         }
 
         /* Testimonials Section */
         .testimonials {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
         }
 
@@ -502,11 +515,13 @@
             font-style: italic;
             color: var(--secondary-color);
             margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         .testimonial-card h6 {
             font-family: var(--font-heading);
             color: var(--primary-color);
+            font-size: 1.2rem;
         }
 
         /* Featured In Section */
@@ -518,7 +533,7 @@
         .featured-in-grid {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
@@ -536,13 +551,13 @@
 
         /* Contact Section */
         #contact {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
         }
 
         #contact p {
             font-family: var(--font-body);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--secondary-color);
         }
 
@@ -570,7 +585,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            background: var(--gradient);
         }
 
         footer i {
@@ -587,25 +602,239 @@
         footer p {
             font-family: var(--font-secondary);
             color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .navbar-nav .nav-link {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            .main-content {
+                padding-top: 60px;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .btn-gold {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-title::after {
+                width: 60px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .about-text {
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .about-image {
+                max-width: 80%;
+            }
+
+            .about-image::before,
+            .about-image::after {
+                display: none;
+            }
+
+            .tech-stack-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .tech-stack-item i {
+                font-size: 1.5rem;
+            }
+
+            .tech-stack-item span {
+                font-size: 0.8rem;
+            }
+
+            .skills-box i {
+                font-size: 1.5rem;
+            }
+
+            .skills-box h5 {
+                font-size: 1.2rem;
+            }
+
+            .skills-box p {
+                font-size: 0.9rem;
+            }
+
+            .timeline li {
+                padding: 1rem;
+            }
+
+            .timeline li p {
+                font-size: 0.9rem;
+            }
+
+            .project-card img {
+                height: 150px;
+            }
+
+            .project-card h5 {
+                font-size: 1.2rem;
+            }
+
+            .project-card p {
+                font-size: 0.9rem;
+            }
+
+            .project-overlay a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .testimonial-card p {
+                font-size: 0.9rem;
+            }
+
+            .testimonial-card h6 {
+                font-size: 1rem;
+            }
+
+            .featured-in-grid img {
+                height: 30px;
+            }
+
+            #contact p {
+                font-size: 1rem;
+            }
+
+            footer i {
+                font-size: 1.5rem;
+                margin: 0 0.5rem;
+            }
+
+            .custom-cursor {
+                display: none;
+                /* Hide custom cursor on mobile */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-image {
+                max-width: 100%;
+            }
+
+            .tech-stack-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .tech-stack-item i {
+                font-size: 1.2rem;
+            }
+
+            .tech-stack-item span {
+                font-size: 0.7rem;
+            }
+
+            .project-card img {
+                height: 120px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <!-- Fixed Sidebar Navigation -->
-    <nav class="sidebar">
-        <div class="logo">
-            <img src="/assets/images/logo.png" alt="Vincent Agber Logo">
-            <span>Vincent Agber</span>
-        </div>
-        <div class="nav-links">
-            <a href="#home" title="Home"><i class="fas fa-home"></i><span>Home</span></a>
-            <a href="#about" title="About"><i class="fas fa-user"></i><span>About</span></a>
-            <a href="#tech-stack" title="Tech Stack"><i class="fas fa-tools"></i><span>Tech Stack</span></a>
-            <a href="#skills" title="Skills"><i class="fas fa-code"></i><span>Skills</span></a>
-            <a href="#experience" title="Experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
-            <a href="#projects" title="Projects"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
-            <a href="#testimonials" title="Testimonials"><i class="fas fa-quote-left"></i><span>Testimonials</span></a>
-            <a href="#contact" title="Contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="/assets/images/logo.png" alt="Vincent Agber Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tech-stack">Tech Stack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -613,11 +842,11 @@
     <div class="main-content">
         <!-- Hero Section -->
         <section class="hero" id="home">
-            <div class="hero-bg"></div>
+            <canvas id="hero-canvas"></canvas>
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1>Vincent Agber</h1>
-                <p>Web Developer | WordPress Expert | Digital Solutionist</p>
+                <p>Full-Stack Developer | WordPress Expert | Digital Solutionist</p>
                 <a href="#contact" class="btn btn-gold">Let's Collaborate</a>
             </div>
         </section>
@@ -628,11 +857,16 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Hello, I’m Vincent Agber—a passionate frontend developer with over 5 years of experience crafting functional, visually stunning websites and applications. My expertise spans HTML, CSS, JavaScript, React.js, and custom WordPress development. I’m dedicated to building scalable, secure, and user-centric digital experiences that leave a lasting impression.<br>In Digital Marketing, I bring a strategic approach to Facebook Advertising and Google Ads, utilizing these platforms to
-                        craft compelling campaigns that resonate with target audiences.
-                        As a Web Developer, I am dedicated to the art and science of creating engaging and functional online experiences. From
-                        conceptualization to execution, I've honed my Web Design and Development skills to deliver websites that meet and exceed
-                        client expectations.</p>
+                        <p>Hello, I’m Vincent Agber—a passionate full-stack developer with over 5 years of experience
+                            crafting functional, visually stunning websites and applications. My expertise spans HTML,
+                            CSS, JavaScript, React.js, Node.js, and custom WordPress development. I’m dedicated to
+                            building scalable, secure, and user-centric digital experiences that leave a lasting
+                            impression.<br>In Digital Marketing, I bring a strategic approach to Facebook Advertising
+                            and Google Ads, utilizing these platforms to craft compelling campaigns that resonate with
+                            target audiences.<br>As a Full-Stack Developer, I am dedicated to the art and science of
+                            creating engaging and functional online experiences. From conceptualization to execution,
+                            I've honed my Web Design and Development skills to deliver websites that meet and exceed
+                            client expectations.</p>
                     </div>
                     <div class="about-image">
                         <img src="/assets/images/vincent.png" alt="Vincent Agber" class="img-fluid">
@@ -645,36 +879,46 @@
         <section class="tech-stack" id="tech-stack">
             <div class="container">
                 <h2 class="section-title">My Tech Stack</h2>
-                <div class="tech-stack-grid">
-                    <div class="tech-stack-item">
+                <div class="tech-stack-container">
+                    <svg class="tech-stack-svg">
+                        <path id="path1" d="M200,200 L300,100" />
+                        <path id="path2" d="M200,200 L300,300" />
+                        <path id="path3" d="M200,200 L100,300" />
+                        <path id="path4" d="M200,200 L100,100" />
+                        <path id="path5" d="M200,200 L350,200" />
+                        <path id="path6" d="M200,200 L50,200" />
+                        <path id="path7" d="M200,200 L250,50" />
+                        <path id="path8" d="M200,200 L150,350" />
+                    </svg>
+                    <div class="tech-stack-item" style="top: 0; left: 250px;">
                         <i class="fab fa-html5"></i>
                         <span>HTML5</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: 200px; left: 300px;">
                         <i class="fab fa-css3-alt"></i>
                         <span>CSS3</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: 200px; left: 0;">
                         <i class="fab fa-js"></i>
                         <span>JavaScript</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: 0; left: 50px;">
                         <i class="fab fa-react"></i>
                         <span>React.js</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: 100px; left: 350px;">
                         <i class="fab fa-wordpress"></i>
                         <span>WordPress</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: 100px; left: -50px;">
                         <i class="fab fa-php"></i>
                         <span>PHP</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: -50px; left: 200px;">
                         <i class="fas fa-database"></i>
                         <span>MySQL</span>
                     </div>
-                    <div class="tech-stack-item">
+                    <div class="tech-stack-item" style="top: 250px; left: 100px;">
                         <i class="fab fa-git-alt"></i>
                         <span>Git</span>
                     </div>
@@ -687,28 +931,28 @@
             <div class="container">
                 <h2 class="section-title">Skills & Expertise</h2>
                 <div class="row g-4">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                         <div class="skills-box">
                             <i class="fas fa-code"></i>
                             <h5>Frontend Development</h5>
                             <p>HTML, CSS, JS, React</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                         <div class="skills-box">
                             <i class="fas fa-database"></i>
                             <h5>Backend</h5>
                             <p>PHP, MySQL, APIs</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                         <div class="skills-box">
                             <i class="fab fa-wordpress"></i>
                             <h5>WordPress</h5>
                             <p>Custom Themes & Plugins</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                         <div class="skills-box">
                             <i class="fas fa-shield-alt"></i>
                             <h5>Security & SEO</h5>
@@ -725,11 +969,21 @@
                 <h2 class="section-title">Work Experience</h2>
                 <div class="timeline">
                     <ul>
-                        <li><p>IT Support - Affordable Cars Ltd (2022 - 2023)</p></li>
-                        <li><p>IT Manager - Clearedge Media Ltd (2020 - 2022)</p></li>
-                        <li><p>Web Developer - DSM-Properties Ltd (2019 - 2020)</p></li>
-                        <li><p>Branch Manager - Webcity Online (2018 - 2019)</p></li>
-                        <li><p>Supervisor - Sure-Stream Resources (2016 - 2018)</p></li>
+                        <li>
+                            <p>IT Support - Affordable Cars Ltd (2022 - 2023)</p>
+                        </li>
+                        <li>
+                            <p>IT Manager - Clearedge Media Ltd (2020 - 2022)</p>
+                        </li>
+                        <li>
+                            <p>Web Developer - DSM-Properties Ltd (2019 - 2020)</p>
+                        </li>
+                        <li>
+                            <p>Branch Manager - Webcity Online (2018 - 2019)</p>
+                        </li>
+                        <li>
+                            <p>Supervisor - Sure-Stream Resources (2016 - 2018)</p>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -741,38 +995,44 @@
                 <h2 class="section-title">Recent Projects</h2>
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <div class="project-card">
+                        <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                            data-tilt-perspective="1000">
                             <img src="/assets/images/project2.png" alt="PrintExpress">
                             <div class="project-overlay">
                                 <a href="https://majesticgraceembassy.com">View Project</a>
                             </div>
                             <div class="p-3">
                                 <h5>PrintExpress.ng</h5>
-                                <p>A modern print ordering platform built to improve user retention and simplify UX. Increased repeat visits by 30%.</p>
+                                <p>A modern print ordering platform built to improve user retention and simplify UX.
+                                    Increased repeat visits by 30%.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="project-card">
+                        <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                            data-tilt-perspective="1000">
                             <img src="/assets/images/project1.png" alt="PecaStravels">
                             <div class="project-overlay">
                                 <a href="https://njunkimlegal.com/legalcrm/public">View Project</a>
                             </div>
                             <div class="p-3">
                                 <h5>PecaStravels.com</h5>
-                                <p>Built for a luxury travel agency. SEO-optimized and mobile-friendly. Traffic up by 50% in 3 months.</p>
+                                <p>Built for a luxury travel agency. SEO-optimized and mobile-friendly. Traffic up by
+                                    50% in 3 months.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="project-card">
+                        <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
+                            data-tilt-perspective="1000">
                             <img src="/assets/images/project3.png" alt="Caspian Refinery">
                             <div class="project-overlay">
                                 <a href="https://www.alfonsoandcompany.com/">View Project</a>
                             </div>
                             <div class="p-3">
                                 <h5>CaspianRefinery.kz</h5>
-                                <p>Enterprise-grade redesign of a Kazakh refinery company website. Focused on international appeal and performance.</p>
+                                <p>Enterprise-grade redesign of a Kazakh refinery company website. Focused on
+                                    international appeal and performance.</p>
                             </div>
                         </div>
                     </div>
@@ -787,19 +1047,22 @@
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="testimonial-card">
-                            <p>"Vincent delivered an exceptional website for our travel agency. His attention to detail and expertise in SEO doubled our traffic in just three months!"</p>
+                            <p>"Vincent delivered an exceptional website for our travel agency. His attention to detail
+                                and expertise in SEO doubled our traffic in just three months!"</p>
                             <h6>— Sarah Thompson, PecaStravels</h6>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="testimonial-card">
-                            <p>"Working with Vincent was a pleasure. He transformed our outdated website into a modern, user-friendly platform that significantly improved our user retention."</p>
+                            <p>"Working with Vincent was a pleasure. He transformed our outdated website into a modern,
+                                user-friendly platform that significantly improved our user retention."</p>
                             <h6>— Michael Okoro, PrintExpress</h6>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="testimonial-card">
-                            <p>"Vincent’s expertise in web development and cybersecurity gave us confidence in our new site. His work is truly world-class."</p>
+                            <p>"Vincent’s expertise in web development and cybersecurity gave us confidence in our new
+                                site. His work is truly world-class."</p>
                             <h6>— Aisha Khan, Caspian Refinery</h6>
                         </div>
                     </div>
@@ -827,7 +1090,8 @@
                 <p>Open to freelance, contract, or full-time roles. Let's create something extraordinary.</p>
                 <div class="mt-4">
                     <a href="/assets/Vincent Agber.pdf" class="btn btn-gold" download>Download My CV</a>
-                    <p class="mt-3">Email: <a href="mailto:vincentagber74@gmail.com">vincentagber74@gmail.com</a> | Phone: <a href="tel:+2348177148582">+2348177148582</a></p>
+                    <p class="mt-3">Email: <a href="mailto:vincentagber74@gmail.com">vincentagber74@gmail.com</a> |
+                        Phone: <a href="tel:+2348177148582">+2348177148582</a></p>
                 </div>
             </div>
         </section>
@@ -845,6 +1109,11 @@
                 <p class="mt-3">© 2025 Vincent Agber. All Rights Reserved.</p>
             </div>
         </footer>
+
+        <!-- Back to Top Button -->
+        <a href="#home" class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </a>
     </div>
 
     <!-- Scripts -->
@@ -860,20 +1129,66 @@
             });
         });
 
+        // Custom Cursor
+        const cursor = document.getElementById('customCursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .project-card, .skills-box, .testimonial-card').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hovered');
+            });
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hovered');
+            });
+        });
+
+        // Three.js Particle System for Hero Section
+        const canvas = document.getElementById('hero-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 5000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xc5a147,
+            transparent: true,
+            opacity: 0.8
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        camera.position.z = 5;
+
+        const animateParticles = () => {
+            requestAnimationFrame(animateParticles);
+            particlesMesh.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        };
+
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Section Parallax
-        gsap.to('.hero-bg', {
-            scrollTrigger: {
-                trigger: '.hero',
-                scrub: true,
-                start: 'top top',
-                end: 'bottom top'
-            },
-            y: '20%',
-            ease: 'none'
-        });
 
         // Hero Section Animation
         gsap.from('.hero-content h1', {
@@ -899,7 +1214,7 @@
             ease: 'back.out(1.7)'
         });
 
-        // Section Animations
+        // Section Transitions
         gsap.utils.toArray('section').forEach(section => {
             gsap.from(section, {
                 opacity: 0,
@@ -914,7 +1229,37 @@
             });
         });
 
-        // Tech Stack Animation
+        // Split Text Animation for Section Titles
+        document.querySelectorAll('.section-title').forEach(title => {
+            const chars = title.textContent.split('');
+            title.innerHTML = chars.map(char => `<span class="char">${char}</span>`).join('');
+            gsap.from(title.querySelectorAll('.char'), {
+                opacity: 0,
+                y: 20,
+                duration: 0.5,
+                stagger: 0.05,
+                scrollTrigger: {
+                    trigger: title,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Tech Stack SVG Path Animation
+        gsap.utils.toArray('.tech-stack-svg path').forEach(path => {
+            gsap.to(path, {
+                strokeDashoffset: 0,
+                duration: 2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.tech-stack',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
         gsap.utils.toArray('.tech-stack-item').forEach(item => {
             gsap.from(item, {
                 opacity: 0,
@@ -942,6 +1287,24 @@
                 }
             });
         });
+
+        // Initialize Vanilla Tilt for Project Cards
+        VanillaTilt.init(document.querySelectorAll('.project-card'), {
+            max: 15,
+            speed: 400,
+            perspective: 1000
+        });
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
     </script>
 </body>
+
 </html>
