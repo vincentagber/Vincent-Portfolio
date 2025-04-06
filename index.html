@@ -300,61 +300,140 @@
         }
 
         /* Tech Stack Section with SVG Animation */
-        .tech-stack {
-            padding: 4rem 0;
-            background: #0a0a0a;
-            position: relative;
-        }
+        /* Tech Stack Section with 3D Constellation */
+.tech-stack {
+    padding: 4rem 0;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+}
 
-        .tech-stack-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            margin: 0 auto;
-        }
+.tech-stack-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
 
-        .tech-stack-item {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease;
-        }
+#tech-stack-canvas {
+    width: 100%;
+    height: 100%;
+}
 
-        .tech-stack-item:hover {
-            transform: scale(1.2);
-        }
+.tech-stack-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(197, 161, 71, 0.3);
+}
 
-        .tech-stack-item i {
-            font-size: 2rem;
-            color: var(--primary-color);
-        }
+.tech-stack-tooltip h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
 
-        .tech-stack-item span {
-            font-family: var(--font-secondary);
-            font-size: 0.9rem;
-            color: var(--secondary-color);
-            text-align: center;
-        }
+.tech-stack-tooltip p {
+    margin: 0;
+    font-size: 0.8rem;
+}
 
-        svg.tech-stack-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+/* Fallback for Low-Performance Devices */
+.tech-stack-fallback {
+    display: none;
+}
 
-        .tech-stack-svg path {
-            stroke: var(--primary-color);
-            stroke-width: 1;
-            fill: none;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-        }
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
 
+.tech-stack-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.tech-stack-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(197, 161, 71, 0.3);
+}
+
+.tech-stack-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.tech-stack-item span {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.tech-stack-item p {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .tech-stack-container {
+        width: 400px;
+        height: 400px;
+    }
+
+    .tech-stack-item i {
+        font-size: 1.5rem;
+    }
+
+    .tech-stack-item span {
+        font-size: 0.9rem;
+    }
+
+    .tech-stack-item p {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .tech-stack-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .tech-stack-item i {
+        font-size: 1.2rem;
+    }
+
+    .tech-stack-item span {
+        font-size: 0.8rem;
+    }
+
+    .tech-stack-item p {
+        font-size: 0.6rem;
+    }
+}
         /* Skills Section */
         .skills-box {
             background: rgba(255, 255, 255, 0.05);
@@ -875,56 +954,60 @@
             </div>
         </section>
 
-        <!-- Tech Stack Section -->
-        <section class="tech-stack" id="tech-stack">
-            <div class="container">
-                <h2 class="section-title">My Tech Stack</h2>
-                <div class="tech-stack-container">
-                    <svg class="tech-stack-svg">
-                        <path id="path1" d="M200,200 L300,100" />
-                        <path id="path2" d="M200,200 L300,300" />
-                        <path id="path3" d="M200,200 L100,300" />
-                        <path id="path4" d="M200,200 L100,100" />
-                        <path id="path5" d="M200,200 L350,200" />
-                        <path id="path6" d="M200,200 L50,200" />
-                        <path id="path7" d="M200,200 L250,50" />
-                        <path id="path8" d="M200,200 L150,350" />
-                    </svg>
-                    <div class="tech-stack-item" style="top: 0; left: 250px;">
-                        <i class="fab fa-html5"></i>
-                        <span>HTML5</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: 200px; left: 300px;">
-                        <i class="fab fa-css3-alt"></i>
-                        <span>CSS3</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: 200px; left: 0;">
-                        <i class="fab fa-js"></i>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: 0; left: 50px;">
-                        <i class="fab fa-react"></i>
-                        <span>React.js</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: 100px; left: 350px;">
-                        <i class="fab fa-wordpress"></i>
-                        <span>WordPress</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: 100px; left: -50px;">
-                        <i class="fab fa-php"></i>
-                        <span>PHP</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: -50px; left: 200px;">
-                        <i class="fas fa-database"></i>
-                        <span>MySQL</span>
-                    </div>
-                    <div class="tech-stack-item" style="top: 250px; left: 100px;">
-                        <i class="fab fa-git-alt"></i>
-                        <span>Git</span>
+    <!-- Tech Stack Section -->
+    <section class="tech-stack" id="tech-stack">
+        <div class="container">
+            <h2 class="section-title">My Tech Stack</h2>
+            <div class="tech-stack-container">
+                <canvas id="tech-stack-canvas"></canvas>
+                <!-- Fallback for Low-Performance Devices -->
+                <div class="tech-stack-fallback">
+                    <div class="tech-stack-grid">
+                        <div class="tech-stack-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                            <p>Expert - Building semantic and accessible web structures.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                            <p>Expert - Crafting responsive and visually stunning designs.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                            <p>Advanced - Adding interactivity with modern ES6+ standards.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fab fa-react"></i>
+                            <span>React.js</span>
+                            <p>Advanced - Developing scalable and reusable UI components.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fab fa-wordpress"></i>
+                            <span>WordPress</span>
+                            <p>Expert - Custom themes and plugins for CMS solutions.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                            <p>Intermediate - Backend scripting for dynamic websites.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                            <p>Intermediate - Managing relational databases efficiently.</p>
+                        </div>
+                        <div class="tech-stack-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                            <p>Expert - Version control for collaborative development.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <!-- Skills Section -->
         <section class="py-5" id="skills" style="background: #0a0a0a;">
@@ -1246,32 +1329,222 @@
             });
         });
 
-        // Tech Stack SVG Path Animation
-        gsap.utils.toArray('.tech-stack-svg path').forEach(path => {
-            gsap.to(path, {
-                strokeDashoffset: 0,
-                duration: 2,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.tech-stack',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
+        
+// Detect Low-Performance Devices
+const isLowPerformance = () => {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const hasLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4;
+    return isMobile || hasLowMemory;
+};
+
+// Tech Stack Section: 3D Constellation with Three.js
+const techStackCanvas = document.getElementById('tech-stack-canvas');
+let techScene, techCamera, techRenderer, techNodes = [], techLines = [], techParticles;
+const techData = [
+    { name: 'HTML5', iconClass: 'fab fa-html5', description: 'Building semantic and accessible web structures.', proficiency: 'Expert' },
+    { name: 'CSS3', iconClass: 'fab fa-css3-alt', description: 'Crafting responsive and visually stunning designs.', proficiency: 'Expert' },
+    { name: 'JavaScript', iconClass: 'fab fa-js', description: 'Adding interactivity with modern ES6+ standards.', proficiency: 'Advanced' },
+    { name: 'React.js', iconClass: 'fab fa-react', description: 'Developing scalable and reusable UI components.', proficiency: 'Advanced' },
+    { name: 'WordPress', iconClass: 'fab fa-wordpress', description: 'Custom themes and plugins for CMS solutions.', proficiency: 'Expert' },
+    { name: 'PHP', iconClass: 'fab fa-php', description: 'Backend scripting for dynamic websites.', proficiency: 'Intermediate' },
+    { name: 'MySQL', iconClass: 'fas fa-database', description: 'Managing relational databases efficiently.', proficiency: 'Intermediate' },
+    { name: 'Git', iconClass: 'fab fa-git-alt', description: 'Version control for collaborative development.', proficiency: 'Expert' }
+];
+
+if (!isLowPerformance()) {
+    techScene = new THREE.Scene();
+    techCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // Aspect ratio 1:1 for square container
+    techRenderer = new THREE.WebGLRenderer({ canvas: techStackCanvas, alpha: true });
+    techRenderer.setSize(600, 600);
+
+    // Create nodes (spheres) for each tech
+    techData.forEach((tech, index) => {
+        const geometry = new THREE.SphereGeometry(0.2, 32, 32);
+        const material = new THREE.MeshBasicMaterial({ color: 0xc5a147, transparent: true, opacity: 0.8 });
+        const node = new THREE.Mesh(geometry, material);
+
+        const theta = (index / techData.length) * Math.PI * 2;
+        const radius = 2;
+        node.position.set(radius * Math.cos(theta), radius * Math.sin(theta), 0);
+        node.userData = { ...tech, originalScale: 1, hovered: false };
+        techNodes.push(node);
+        techScene.add(node);
+    });
+
+    // Create lines connecting the nodes
+    for (let i = 0; i < techNodes.length; i++) {
+        for (let j = i + 1; j < techNodes.length; j++) {
+            const geometry = new THREE.BufferGeometry().setFromPoints([
+                techNodes[i].position,
+                techNodes[j].position
+            ]);
+            const material = new THREE.LineBasicMaterial({ color: 0xc5a147, transparent: true, opacity: 0.2 });
+            const line = new THREE.Line(geometry, material);
+            techLines.push(line);
+            techScene.add(line);
+        }
+    }
+
+    // Create particles for hover effect
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 100;
+    const posArray = new Float32Array(particlesCount * 3);
+    for (let i = 0; i < particlesCount * 3; i++) {
+        posArray[i] = 0;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.05,
+        color: 0xc5a147,
+        transparent: true,
+        opacity: 0
+    });
+    techParticles = new THREE.Points(particlesGeometry, particlesMaterial);
+    techScene.add(techParticles);
+
+    techCamera.position.z = 5;
+
+    // Animation loop
+    const animateTechConstellation = () => {
+        requestAnimationFrame(animateTechConstellation);
+
+        techNodes.forEach(node => {
+            node.rotation.y += 0.01;
+            const scale = node.userData.hovered ? 1.5 : 1;
+            node.scale.set(scale, scale, scale);
         });
 
-        gsap.utils.toArray('.tech-stack-item').forEach(item => {
-            gsap.from(item, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 90%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
+        techLines.forEach(line => {
+            const opacity = techNodes.some(node => node.userData.hovered) ? 0.5 : 0.2;
+            line.material.opacity = opacity;
         });
+
+        techRenderer.render(techScene, techCamera);
+    };
+    animateTechConstellation();
+
+    // Tooltip and interaction
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tech-stack-tooltip';
+    document.querySelector('.tech-stack-container').appendChild(tooltip);
+
+    techStackCanvas.addEventListener('mousemove', (event) => {
+        const rect = techStackCanvas.getBoundingClientRect();
+        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, techCamera);
+        const intersects = raycaster.intersectObjects(techNodes);
+
+        techNodes.forEach(node => node.userData.hovered = false);
+        techParticles.material.opacity = 0;
+
+        if (intersects.length > 0) {
+            const node = intersects[0].object;
+            node.userData.hovered = true;
+            tooltip.style.opacity = 1;
+            tooltip.innerHTML = `
+                <h3>${node.userData.name}</h3>
+                <p>${node.userData.description}</p>
+                <p>Proficiency: ${node.userData.proficiency}</p>
+            `;
+            tooltip.style.left = `${event.clientX + 10}px`;
+            tooltip.style.top = `${event.clientY + 10}px`;
+
+            // Update particle positions around the hovered node
+            const positions = techParticles.geometry.attributes.position.array;
+            for (let i = 0; i < particlesCount; i++) {
+                const i3 = i * 3;
+                positions[i3] = node.position.x + (Math.random() - 0.5) * 0.5;
+                positions[i3 + 1] = node.position.y + (Math.random() - 0.5) * 0.5;
+                positions[i3 + 2] = node.position.z + (Math.random() - 0.5) * 0.5;
+            }
+            techParticles.geometry.attributes.position.needsUpdate = true;
+            techParticles.material.opacity = 0.8;
+        } else {
+            tooltip.style.opacity = 0;
+        }
+    });
+
+    techStackCanvas.addEventListener('mouseleave', () => {
+        techNodes.forEach(node => node.userData.hovered = false);
+        techParticles.material.opacity = 0;
+        tooltip.style.opacity = 0;
+    });
+
+    // Mobile tap interaction
+    if ('ontouchstart' in window) {
+        techStackCanvas.addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            const touch = event.touches[0];
+            mouse.x = ((touch.clientX - techStackCanvas.getBoundingClientRect().left) / techStackCanvas.clientWidth) * 2 - 1;
+            mouse.y = -((touch.clientY - techStackCanvas.getBoundingClientRect().top) / techStackCanvas.clientHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, techCamera);
+            const intersects = raycaster.intersectObjects(techNodes);
+
+            techNodes.forEach(node => node.userData.hovered = false);
+            techParticles.material.opacity = 0;
+
+            if (intersects.length > 0) {
+                const node = intersects[0].object;
+                node.userData.hovered = true;
+                tooltip.style.opacity = 1;
+                tooltip.innerHTML = `
+                    <h3>${node.userData.name}</h3>
+                    <p>${node.userData.description}</p>
+                    <p>Proficiency: ${node.userData.proficiency}</p>
+                `;
+                tooltip.style.left = `${touch.clientX + 10}px`;
+                tooltip.style.top = `${touch.clientY + 10}px`;
+
+                const positions = techParticles.geometry.attributes.position.array;
+                for (let i = 0; i < particlesCount; i++) {
+                    const i3 = i * 3;
+                    positions[i3] = node.position.x + (Math.random() - 0.5) * 0.5;
+                    positions[i3 + 1] = node.position.y + (Math.random() - 0.5) * 0.5;
+                    positions[i3 + 2] = node.position.z + (Math.random() - 0.5) * 0.5;
+                }
+                techParticles.geometry.attributes.position.needsUpdate = true;
+                techParticles.material.opacity = 0.8;
+            } else {
+                tooltip.style.opacity = 0;
+            }
+        });
+
+        techStackCanvas.addEventListener('touchend', () => {
+            techNodes.forEach(node => node.userData.hovered = false);
+            techParticles.material.opacity = 0;
+            tooltip.style.opacity = 0;
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        const size = Math.min(600, window.innerWidth * 0.8);
+        techRenderer.setSize(size, size);
+        techCamera.aspect = 1;
+        techCamera.updateProjectionMatrix();
+    });
+} else {
+    techStackCanvas.style.display = 'none';
+    document.querySelector('.tech-stack-fallback').style.display = 'block';
+
+    // Fallback animations for the grid
+    gsap.utils.toArray('.tech-stack-item').forEach(item => {
+        gsap.from(item, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: item,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+}
 
         // Testimonial Animation
         gsap.utils.toArray('.testimonial-card').forEach((card, index) => {
