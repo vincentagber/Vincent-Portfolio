@@ -153,16 +153,6 @@
             z-index: 1;
         }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)); */
-            z-index: 2;
-        }
-
         .hero-content {
             position: relative;
             z-index: 3;
@@ -196,11 +186,8 @@
             transition: all 0.3s ease;
             font-size: 1rem;
             z-index: 4;
-          
             position: relative;
-        
             display: inline-block;
-    
         }
 
         .btn-gold:hover {
@@ -208,7 +195,6 @@
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
             color: #fff;
-            /* Ensure text color remains white on hover */
         }
 
         /* Section Titles */
@@ -283,33 +269,6 @@
 
         .about-image:hover img {
             transform: scale(1.05) translateY(-10px);
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100px;
-            height: 100px;
-            background: url('/assets/images/gold-frame.png') no-repeat;
-            background-size: contain;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            width: 100px;
-            height: 100px;
-            background: url('/assets/images/gold-frame.png') no-repeat;
-            background-size: contain;
-            z-index: -1;
-            opacity: 0.3;
-            transform: rotate(180deg);
         }
 
         /* Tech Stack Section with Clean Grid Layout */
@@ -455,40 +414,6 @@
 
         .project-card:hover img {
             transform: scale(1.1);
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-overlay a {
-            font-family: var(--font-heading);
-            color: var(--primary-color);
-            text-decoration: none;
-            border: 2px solid var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .project-overlay a:hover {
-            background: var(--primary-color);
-            color: #000;
         }
 
         .project-card h5 {
@@ -667,11 +592,6 @@
                 max-width: 80%;
             }
 
-            .about-image::before,
-            .about-image::after {
-                display: none;
-            }
-
             .tech-stack-grid {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 1rem;
@@ -723,11 +643,6 @@
             }
 
             .project-card p {
-                font-size: 0.9rem;
-            }
-
-            .project-overlay a {
-                padding: 0.4rem 0.8rem;
                 font-size: 0.9rem;
             }
 
@@ -840,7 +755,6 @@
         <!-- Hero Section -->
         <section class="hero" id="home">
             <canvas id="hero-canvas"></canvas>
-            <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1>Vincent Agber</h1>
                 <p>Full-Stack Developer | WordPress Expert | Digital Solutionist</p>
@@ -854,9 +768,9 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Hello, I’m Vincent Agber—a passionate full-stack developer with over 5 years of experience
+                        <p>Hello, I’m Vincent Agber—a passionate full-stack developer with over 7 years of experience
                             crafting functional, visually stunning websites and applications. My expertise spans HTML,
-                            CSS, JavaScript, Tailwind CSS, Node.js, and custom WordPress development. I’m dedicated to
+                            CSS, JavaScript, Tailwind CSS, PHP, and custom WordPress development. I’m dedicated to
                             building scalable, secure, and user-centric digital experiences that leave a lasting
                             impression.<br>In Digital Marketing, I bring a strategic approach to Facebook Advertising
                             and Google Ads, utilizing these platforms to craft compelling campaigns that resonate with
@@ -993,13 +907,11 @@
                         <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
                             data-tilt-perspective="1000">
                             <img src="/assets/images/project2.png" alt="PrintExpress" loading="lazy">
-                            <div class="project-overlay">
-                                <a href="https://majesticgraceembassy.com">View Project</a>
-                            </div>
                             <div class="p-3">
                                 <h5>PrintExpress.ng</h5>
                                 <p>A modern print ordering platform built to improve user retention and simplify UX.
                                     Increased repeat visits by 30%.</p>
+                                <a href="https://majesticgraceembassy.com" class="btn btn-gold mt-2">View Project</a>
                             </div>
                         </div>
                     </div>
@@ -1007,13 +919,12 @@
                         <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
                             data-tilt-perspective="1000">
                             <img src="/assets/images/project1.png" alt="PecaStravels" loading="lazy">
-                            <div class="project-overlay">
-                                <a href="https://njunkimlegal.com/legalcrm/public">View Project</a>
-                            </div>
                             <div class="p-3">
                                 <h5>PecaStravels.com</h5>
                                 <p>Built for a luxury travel agency. SEO-optimized and mobile-friendly. Traffic up by
                                     50% in 3 months.</p>
+                                <a href="https://njunkimlegal.com/legalcrm/public" class="btn btn-gold mt-2">View
+                                    Project</a>
                             </div>
                         </div>
                     </div>
@@ -1021,13 +932,11 @@
                         <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
                             data-tilt-perspective="1000">
                             <img src="/assets/images/project3.png" alt="Caspian Refinery" loading="lazy">
-                            <div class="project-overlay">
-                                <a href="https://www.alfonsoandcompany.com/">View Project</a>
-                            </div>
                             <div class="p-3">
                                 <h5>CaspianRefinery.kz</h5>
                                 <p>Enterprise-grade redesign of a Kazakh refinery company website. Focused on
                                     international appeal and performance.</p>
+                                <a href="https://www.alfonsoandcompany.com/" class="btn btn-gold mt-2">View Project</a>
                             </div>
                         </div>
                     </div>
@@ -1131,60 +1040,49 @@
             });
         }
 
-        // Detect Low-Performance Devices
-        const isLowPerformance = () => {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const hasLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4;
-            return isMobile || hasLowMemory;
-        };
-
-        // Three.js Particle System for Hero Section
+        // Three.js Particle System for Hero Section (Enabled for all devices)
         const heroCanvas = document.getElementById('hero-canvas');
         let heroScene, heroCamera, heroRenderer, heroParticlesMesh;
 
-        if (!isLowPerformance()) {
-            heroScene = new THREE.Scene();
-            heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true });
-            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        heroScene = new THREE.Scene();
+        heroCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true });
+        heroRenderer.setSize(window.innerWidth, window.innerHeight);
 
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 3000; // Reduced for better performance
-            const posArray = new Float32Array(particlesCount * 3);
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 3000; // Reduced for better performance
+        const posArray = new Float32Array(particlesCount * 3);
 
-            for (let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 10;
-            }
-
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particlesMaterial = new THREE.PointsMaterial({
-                size: 0.02,
-                color: 0xc5a147,
-                transparent: true,
-                opacity: 0.8
-            });
-
-            heroParticlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            heroScene.add(heroParticlesMesh);
-
-            heroCamera.position.z = 5;
-
-            const animateHeroParticles = () => {
-                requestAnimationFrame(animateHeroParticles);
-                heroParticlesMesh.rotation.y += 0.001;
-                heroRenderer.render(heroScene, heroCamera);
-            };
-
-            animateHeroParticles();
-
-            window.addEventListener('resize', () => {
-                heroCamera.aspect = window.innerWidth / window.innerHeight;
-                heroCamera.updateProjectionMatrix();
-                heroRenderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        } else {
-            heroCanvas.style.display = 'none';
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
         }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xc5a147,
+            transparent: true,
+            opacity: 0.8
+        });
+
+        heroParticlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        heroScene.add(heroParticlesMesh);
+
+        heroCamera.position.z = 5;
+
+        const animateHeroParticles = () => {
+            requestAnimationFrame(animateHeroParticles);
+            heroParticlesMesh.rotation.y += 0.001;
+            heroRenderer.render(heroScene, heroCamera);
+        };
+
+        animateHeroParticles();
+
+        window.addEventListener('resize', () => {
+            heroCamera.aspect = window.innerWidth / window.innerHeight;
+            heroCamera.updateProjectionMatrix();
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
@@ -1289,7 +1187,6 @@
             document.querySelectorAll('.project-card').forEach(card => {
                 card.addEventListener('touchstart', () => {
                     card.style.transform = 'translateY(-10px)';
-                    card.querySelector('.project-overlay').style.opacity = 1;
                 });
             });
         }
