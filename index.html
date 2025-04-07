@@ -429,6 +429,60 @@
             font-size: 1rem;
         }
 
+        /* Case Studies Section */
+        .case-studies {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+        }
+
+        .case-study-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .case-study-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-study-card h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-card h5 {
+            font-family: var(--font-secondary);
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-card p {
+            font-family: var(--font-body);
+            color: var(--secondary-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .case-study-card .btn-gold {
+            margin-top: 1rem;
+        }
+
         /* Testimonials Section */
         .testimonials {
             padding: 4rem 0;
@@ -646,6 +700,22 @@
                 font-size: 0.9rem;
             }
 
+            .case-study-card img {
+                height: 200px;
+            }
+
+            .case-study-card h4 {
+                font-size: 1.5rem;
+            }
+
+            .case-study-card h5 {
+                font-size: 1rem;
+            }
+
+            .case-study-card p {
+                font-size: 0.9rem;
+            }
+
             .testimonial-card p {
                 font-size: 0.9rem;
             }
@@ -701,6 +771,10 @@
             .project-card img {
                 height: 120px;
             }
+
+            .case-study-card img {
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -738,6 +812,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#case-studies">Case Studies</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#testimonials">Testimonials</a>
@@ -907,25 +984,24 @@
                         <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
                             data-tilt-perspective="1000">
                             <img src="/assets/images/project2.png" alt="PrintExpress" loading="lazy">
-                        <div class="p-3">
-                            <h5>MajesticGraceEmbassy.com</h5>
-                            <p>A modern church website designed to enhance engagement, inspire faith, and provide seamless access to sermons,
-                                events, and donations. Built to elevate online ministry presence.</p>
-                            <a href="https://majesticgraceembassy.com" class="btn btn-gold mt-2">View Project</a>
-                        </div>
-
+                            <div class="p-3">
+                                <h5>MajesticGraceEmbassy.com</h5>
+                                <p>A modern church website designed to enhance engagement, inspire faith, and provide seamless access to sermons,
+                                    events, and donations. Built to elevate online ministry presence.</p>
+                                <a href="https://majesticgraceembassy.com" class="btn btn-gold mt-2">View Project</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="project-card" data-tilt data-tilt-max="15" data-tilt-speed="400"
                             data-tilt-perspective="1000">
                             <img src="/assets/images/project1.png" alt="PecaStravels" loading="lazy">
-                        <div class="p-3">
-                            <h5>NjunkimLegal</h5>
-                            <p>A powerful legal CRM platform built to streamline case management, improve client communication, and optimize
-                                firm operations. Fully responsive and secure.</p>
-                            <a href="https://njunkimlegal.com/legalcrm/public" class="btn btn-gold mt-2">View Project</a>
-                        </div>
+                            <div class="p-3">
+                                <h5>NjunkimLegal</h5>
+                                <p>A powerful legal CRM platform built to streamline case management, improve client communication, and optimize
+                                    firm operations. Fully responsive and secure.</p>
+                                <a href="https://njunkimlegal.com/legalcrm/public" class="btn btn-gold mt-2">View Project</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -938,7 +1014,41 @@
                                     clarity, and trust-building with international clients.</p>
                                 <a href="https://www.alfonsoandcompany.com/" class="btn btn-gold mt-2">View Project</a>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Case Studies Section -->
+        <section class="case-studies" id="case-studies">
+            <div class="container">
+                <h2 class="section-title">Case Studies</h2>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="case-study-card">
+                            <img src="/assets/images/project2.png" alt="MajesticGraceEmbassy.com" loading="lazy">
+                            <h4>Majestic Grace Embassy</h4>
+                            <h5>The Challenge</h5>
+                            <p>Majestic Grace Embassy needed a digital platform to connect with their congregation online, offering easy access to sermons, events, and donation options. Their previous website was outdated, lacked mobile responsiveness, and had poor user engagement.</p>
+                            <h5>The Solution</h5>
+                            <p>I designed and developed a modern Bootstrap-based website, integrating features like a sermon library, event calendar, and secure donation system using Stripe. I optimized the site for SEO and ensured full mobile responsiveness, using Tailwind CSS for a sleek, user-friendly design.</p>
+                            <h5>The Results</h5>
+                            <p>Within 2 months of launch, the website saw a 40% increase in online engagement, with sermon views up by 60% and online donations increasing by 25%. The site now ranks on the first page of Google for key local search terms.</p>
+                            <a href="https://majesticgraceembassy.com" class="btn btn-gold">Visit Site</a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="case-study-card">
+                            <img src="/assets/images/project1.png" alt="NjunkimLegal" loading="lazy">
+                            <h4>NjunkimLegal</h4>
+                            <h5>The Challenge</h5>
+                            <p>Njunkim Legal required a CRM platform to manage cases, communicate with clients, and streamline operations. Their existing system was manual, leading to inefficiencies and delayed responses.</p>
+                            <h5>The Solution</h5>
+                            <p>I built a custom legal CRM using PHP, MySQL, and JavaScript, with a responsive frontend designed in Tailwind CSS. The platform includes features like case tracking, client portals, automated notifications, and secure document storage. I also implemented robust cybersecurity measures to protect sensitive data.</p>
+                            <h5>The Results</h5>
+                            <p>The CRM reduced case management time by 35%, improved client response times by 50%, and increased overall firm productivity. Client satisfaction scores rose by 20% due to the improved communication features.</p>
+                            <a href="https://njunkimlegal.com/legalcrm/public" class="btn btn-gold">Visit Site</a>
                         </div>
                     </div>
                 </div>
@@ -952,23 +1062,20 @@
                 <div class="row g-4">
                     <div class="col-md-4">
                         <div class="testimonial-card">
-                            <p>"Vincent delivered an exceptional website for our travel agency. His attention to detail
-                                and expertise in SEO doubled our traffic in just three months!"</p>
-                            <h6>— Sarah Thompson, PecaStravels</h6>
+                            <p>"Vincent, You're indeed good' You actually delivered an exceptional. Your attention to detail and expertise in SEO doubled our online engagement in just three months!"</p>
+                            <h6>— Pastor John Adeyemi, MajesticGraceEmbassy</h6>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="testimonial-card">
-                            <p>"Working with Vincent was a pleasure. He transformed our outdated website into a modern,
-                                user-friendly platform that significantly improved our user retention."</p>
-                            <h6>— Michael Okoro, PrintExpress</h6>
+                            <p>"Working with you was a pleasure, Vincent. The CRM is really a user-friendly platform and it significantly improved our firm’s efficiency."</p>
+                            <h6>— CEO, NjunkimLegal</h6>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="testimonial-card">
-                            <p>"Vincent’s expertise in web development and cybersecurity gave us confidence in our new
-                                site. His work is truly world-class."</p>
-                            <h6>— Aisha Khan, Caspian Refinery</h6>
+                            <p>"Baba, your expertise in web development and design gave us confidence in our new corporate site. Your work is truly world-class."</p>
+                            <h6>— Richard Ademola, AlfonsoAndCompany</h6>
                         </div>
                     </div>
                 </div>
@@ -1031,7 +1138,7 @@
                 cursor.style.top = e.clientY + 'px';
             });
 
-            document.querySelectorAll('a, button, .project-card, .skills-box, .testimonial-card').forEach(element => {
+            document.querySelectorAll('a, button, .project-card, .skills-box, .testimonial-card, .case-study-card').forEach(element => {
                 element.addEventListener('mouseenter', () => {
                     cursor.classList.add('hovered');
                 });
@@ -1156,6 +1263,21 @@
                 duration: 0.8,
                 scrollTrigger: {
                     trigger: item,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Case Study Animation
+        gsap.utils.toArray('.case-study-card').forEach((card, index) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: card,
                     start: 'top 90%',
                     toggleActions: 'play none none reverse'
                 }
