@@ -18,6 +18,10 @@ Vincent Agber's portfolio website is a testament to his expertise and contributi
 - HTML5
 - CSS3
 - JavaScript
+- Bootstrap 5
+- Tailwindcss
+- PHP
+- MySQl
 - ScrollReveal library for scroll animations
 
 ## Usage
