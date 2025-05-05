@@ -766,4 +766,74 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
-  
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap');
+
+    .lux-hero {
+        min-height: 100vh;
+        position: relative;
+        background-color: #d7d7d7;
+        font-family: 'Inter', sans-serif;
+        overflow: hidden;
+        padding: 5rem 2rem;
+    }
+
+   .lux-bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to bottom right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+        url('/assets/images/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    opacity: 1; 
+    z-index: 1;
+}
+
+
+    .lux-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(255, 255, 255, 0.02));
+        backdrop-filter: blur(6px);
+        z-index: 2;
+    }
+
+    .text-highlight {
+        background: linear-gradient(to right, #d4af37, #fff4b0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .text-gold {
+        color: #d4af37;
+    }
+
+    .text-light-emphasis {
+        color: rgba(255, 254, 254, 0.7);
+    }
+
+    .hover-glow:hover {
+        box-shadow: 0 0 15px #d4af37;
+        transition: 0.3s ease;
+    }
+
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeInUp 1.6s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .z-2 {
+        z-index: 3;
+    }
+
+    
