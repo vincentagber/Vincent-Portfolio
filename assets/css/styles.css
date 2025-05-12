@@ -836,4 +836,47 @@
         z-index: 3;
     }
 
-    
+    .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Stack items vertically */
+    min-height: 100vh;
+    position: relative;
+    background: #000; /* or your preferred background */
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Ensure vertical stacking */
+    align-items: center;
+    gap: 1rem; /* spacing between items */
+}
+
+.typing-container {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+#typed-text {
+    color: gold;
+}
+
+#cursor {
+    font-weight: 700;
+    color: gold;
+    animation: blink 0.7s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
