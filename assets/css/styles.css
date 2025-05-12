@@ -840,10 +840,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column; 
     min-height: 100vh;
     position: relative;
-    background: #000; /* or your preferred background */
+    background: #000; 
     text-align: center;
     overflow: hidden;
 }
@@ -853,9 +853,9 @@
     z-index: 2;
     color: #fff;
     display: flex;
-    flex-direction: column; /* Ensure vertical stacking */
+    flex-direction: column; 
     align-items: center;
-    gap: 1rem; /* spacing between items */
+    gap: 1rem; 
 }
 
 .typing-container {
@@ -867,11 +867,13 @@
 }
 
 #typed-text {
-    color: gold;
+     font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
 }
 
 #cursor {
-    font-weight: 700;
+    font-weight: 900;
     color: gold;
     animation: blink 0.7s steps(2, start) infinite;
 }
