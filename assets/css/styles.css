@@ -498,6 +498,34 @@
     left: -1.2rem;
     color: var(--primary-color);
 }
+/* Chat-style message bubbles */
+.chat-bubble {
+  max-width: 80%;
+  padding: 0.75rem 1rem;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  word-wrap: break-word;
+  clear: both;
+}
+
+.chat-left {
+  text-align: left;
+  float: left;
+  border-bottom-left-radius: 0;
+}
+
+.chat-right {
+  text-align: right;
+  float: right;
+  border-bottom-right-radius: 0;
+}
+
+.testimonial-card::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 
         /* Contact Section */
@@ -840,7 +868,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column; 
     min-height: 100vh;
     position: relative;
     background: #000; 
