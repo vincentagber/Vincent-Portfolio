@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-400: #d4b04c;
+  --color-gold-500: #c5a147;
+  /* Original Primary */
+  --color-gold-600: #a88c3b;
+  /* Original Dark */
+
+  --color-purple-900: #4b0082;
+  /* Original Deep Purple */
+
+  --color-black: #0a0a0a;
+
+  --color-dark-100: #2c2c2c;
+  --color-dark-200: #1a1a1a;
+  --color-dark-300: #121212;
+
+  --font-playfair: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --animate-reveal: reveal 0.8s ease-out forwards;
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  --animate-float: float 3s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans antialiased;
+    cursor: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+}

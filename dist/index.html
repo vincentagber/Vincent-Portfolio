@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vincent Agber - Senior Full-Stack Developer & Product Architect." />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Vincent Agber | Senior Full-Stack Engineer</title>
+  <script type="module" crossorigin src="/assets/index-mfG0oax1.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BbBSAHBT.css">
+</head>
+
+<body class="bg-black text-white overflow-x-hidden selection:bg-gold-500 selection:text-black">
+
+    <!-- Custom Cursor (Optional, implemented in CSS/JS) -->
+    <div id="cursor"
+        class="fixed top-0 left-0 w-8 h-8 rounded-full border border-gold-500 pointer-events-none z-[9999] opacity-0 transition-opacity duration-300 hidden md:block mix-blend-difference transform -translate-x-1/2 -translate-y-1/2">
+    </div>
+    <div id="cursor-dot"
+        class="fixed top-0 left-0 w-1 h-1 bg-gold-500 rounded-full pointer-events-none z-[9999] opacity-0 hidden md:block transform -translate-x-1/2 -translate-y-1/2">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/10"></div>
+        <div class="container relative mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="z-50 relative group">
+                <img src="/assets/logo-5aworYbd.png" alt="Vincent Agber"
+                    class="h-10 hover:scale-110 transition-transform duration-300">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about"
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">About</a>
+                <a href="#expertise"
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">Expertise</a>
+                <a href="#work"
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">Work</a>
+                <a href="#testimonials"
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">Testimonials</a>
+                <a href="#contact"
+                    class="px-6 py-2 border border-gold-500 text-gold-500 text-sm font-medium rounded-full hover:bg-gold-500 hover:text-white transition-all duration-300">Let's
+                    Talk</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-toggle" class="md:hidden z-50 text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-black z-40 transform translate-x-full transition-transform duration-500 flex items-center justify-center">
+        <div class="text-center space-y-8">
+            <a href="#about" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">About</a>
+            <a href="#expertise" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">Expertise</a>
+            <a href="#work" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">Work</a>
+            <a href="#contact" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden" id="home">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0 bg-black">
+            <!-- Top Right Purple/Gold Blur -->
+            <div
+                class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-900/60 rounded-full blur-[120px] animate-pulse">
+            </div>
+            <!-- Bottom Left Gold Blur -->
+            <div
+                class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold-500/40 rounded-full blur-[100px]">
+            </div>
+        </div>
+
+        <div class="container relative z-10 px-6 text-center">
+            <p class="text-gold-500 font-bold tracking-[0.2em] mb-6 text-sm uppercase opacity-0 reveal-hero">Senior
+                Full-Stack Engineer</p>
+            <h1
+                class="text-5xl md:text-7xl lg:text-8xl font-playfair font-bold mb-8 leading-tight text-white opacity-0 reveal-hero drop-shadow-2xl">
+                Building <span class="italic text-gold-500">Digital</span> <br />
+                Excellence.
+            </h1>
+            <p
+                class="text-gray-200 max-w-2xl mx-auto text-lg md:text-xl mb-10 font-light opacity-0 reveal-hero leading-relaxed">
+                I transform complex problems into elegant, scalable solutions.
+                Specializing in high-performance web applications and premium digital experiences.
+            </p>
+            <div
+                class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 opacity-0 reveal-hero">
+                <a href="#work"
+                    class="px-8 py-4 bg-gold-500 text-white font-bold rounded-full hover:bg-gold-600 transform hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(197,161,71,0.5)]">View
+                    My Work</a>
+                <a href="#contact"
+                    class="px-8 py-4 border border-white/30 hover:border-white text-white font-medium rounded-full transition-all duration-300">Contact
+                    Me</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+            <i class="fas fa-arrow-down text-gold-500"></i>
+        </div>
+    </header>
+
+    <!-- Main Content Area (Placeholders) -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="py-24 relative overflow-hidden bg-dark-300">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <!-- Image Side -->
+                    <div class="relative group" data-aos="fade-right">
+                        <div
+                            class="absolute -inset-4 bg-gold-500/20 rounded-2xl blur-lg group-hover:bg-gold-500/30 transition-all duration-500">
+                        </div>
+                        <div class="relative overflow-hidden rounded-2xl border-2 border-gold-500">
+                            <img src="/assets/vincent-CmSiTC6B.png" alt="Vincent Agber"
+                                class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+
+                    <!-- Text Side -->
+                    <div data-aos="fade-left">
+                        <h2 class="text-gold-500 text-sm font-bold tracking-widest uppercase mb-4">About Me</h2>
+                        <h3 class="text-4xl md:text-5xl font-playfair font-bold mb-6 text-white">I Craft Digital
+                            <br><span class="text-gold-500">Experiences</span>
+                        </h3>
+                        <div class="space-y-6 text-gray-200 leading-relaxed text-lg">
+                            <p>
+                                I am Vincent Agber, a passionate <strong>Full-Stack Developer</strong> with over 7 years
+                                of experience.
+                                My journey is defined by a relentless pursuit of perfection in code and design.
+                            </p>
+                            <p>
+                                Whether it's a complex web application, a custom WordPress theme, or a high-converting
+                                landing page,
+                                I bring a strategic mindset to every project. I blend technical expertise with creative
+                                problem-solving to build
+                                solutions that not only work seamlessly but also captivate users.
+                            </p>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-8 mt-10 border-t border-white/10 pt-10">
+                            <div>
+                                <span class="block text-4xl font-bold text-white mb-2">7+</span>
+                                <span class="text-xs text-gold-500 uppercase tracking-wider">Years Exp.</span>
+                            </div>
+                            <div>
+                                <span class="block text-4xl font-bold text-white mb-2">50+</span>
+                                <span class="text-xs text-gold-500 uppercase tracking-wider">Projects</span>
+                            </div>
+                            <div>
+                                <span class="block text-4xl font-bold text-white mb-2">100%</span>
+                                <span class="text-xs text-gold-500 uppercase tracking-wider">Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise/Tech Stack Section -->
+        <section id="expertise" class="py-24 bg-dark-200 relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-gold-500 text-sm font-bold tracking-widest uppercase mb-4">My Arsenal</h2>
+                    <h3 class="text-4xl font-playfair font-bold mb-4 text-white">Technologies & Tools</h3>
+                    <p class="text-gray-300">The tools I use to bring ideas to life.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <!-- Tech Items (Restored) -->
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-html5 text-4xl text-gray-400 group-hover:text-[#E34F26] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">HTML5</span>
+                    </div>
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-css3-alt text-4xl text-gray-400 group-hover:text-[#1572B6] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">CSS3</span>
+                    </div>
+                    <!-- JS -->
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-js text-4xl text-gray-400 group-hover:text-[#F7DF1E] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">JavaScript</span>
+                    </div>
+                    <!-- Tailwind -->
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fas fa-wind text-4xl text-gray-400 group-hover:text-[#38B2AC] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">Tailwind</span>
+                    </div>
+                    <!-- React -->
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-react text-4xl text-gray-400 group-hover:text-[#61DAFB] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">ReactJS</span>
+                    </div>
+                    <!-- WordPress -->
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-wordpress text-4xl text-gray-400 group-hover:text-[#21759B] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">WordPress</span>
+                    </div>
+                    <!-- PHP -->
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-php text-4xl text-gray-400 group-hover:text-[#777BB4] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">PHP</span>
+                    </div>
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fas fa-database text-4xl text-gray-400 group-hover:text-[#4479A1] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">MySQL</span>
+                    </div>
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fab fa-git-alt text-4xl text-gray-400 group-hover:text-[#F05032] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">Git</span>
+                    </div>
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fas fa-fire text-4xl text-gray-400 group-hover:text-[#FFCA28] transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">Firebase</span>
+                    </div>
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fas fa-server text-4xl text-gray-400 group-hover:text-green-500 transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">Node.js</span>
+                    </div>
+                    <div
+                        class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
+                        <i
+                            class="fas fa-cloud text-4xl text-gray-400 group-hover:text-blue-400 transition-colors mb-3"></i>
+                        <span class="text-sm font-medium text-white">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients / Trusted By Section (Restored) -->
+        <section class="py-16 bg-white text-dark-300 overflow-hidden">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-xl font-bold uppercase tracking-widest mb-10 text-black/60">Trusted By Forward-Thinking
+                    Brands</h2>
+                <div
+                    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-70 hover:opacity-100 transition-opacity">
+                    <!-- Placeholders to map real images manually if file names are tricky, assuming standard names -->
+                    <img src="/assets/BuddieTrip.com-logo-BLMFljTY.png" alt="Client"
+                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                    <img src="/assets/julius-B5MtTCoz.png" alt="Client"
+                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                    <img src="/assets/haqq-BYAhdmMP.png" alt="Client"
+                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                    <img src="/assets/billionaire-DJ8VXQrZ.png" alt="Client"
+                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                    <img src="/assets/arose-logo-DeXkZy8b.png" alt="Client"
+                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                    <img src="/assets/superlinkit-Dw3QRhL5.png" alt="Client"
+                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 relative bg-dark-300">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-gold-500 text-sm font-bold tracking-widest uppercase mb-4">My Journey</h2>
+                    <h3 class="text-4xl font-playfair font-bold text-white">Work Experience</h3>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-8">
+                    <!-- Experience Item (Streamlined) -->
+                    <div class="relative pl-8 md:pl-0">
+                        <div class="hidden md:block absolute left-1/2 -ml-0.5 w-px h-full bg-white/10"></div>
+                        <div class="md:flex items-center justify-between group">
+                            <div class="md:w-5/12 text-left md:text-right md:pr-10 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-white group-hover:text-gold-500 transition-colors">IT
+                                    Support</h4>
+                                <p class="text-sm text-gray-400">Affordable Cars Ltd</p>
+                            </div>
+                            <div
+                                class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-black -translate-x-1.5 md:-translate-x-2">
+                            </div>
+                            <div class="md:w-5/12 md:pl-10">
+                                <span class="text-sm text-gold-500 font-mono">2022 - 2023</span>
+                                <p class="text-gray-300 text-sm mt-2">Managed IT infrastructure and technical support
+                                    protocols.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative pl-8 md:pl-0">
+                        <div class="hidden md:block absolute left-1/2 -ml-0.5 w-px h-full bg-white/10"></div>
+
+                        <div class="md:flex items-center justify-between group flex-row-reverse md:flex-row">
+                            <div class="md:w-5/12 text-left md:text-right md:pr-10 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-white group-hover:text-gold-500 transition-colors">IT
+                                    Manager</h4>
+                                <p class="text-sm text-gray-400">Clearedge Media Ltd</p>
+                            </div>
+                            <div
+                                class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-dark-100 border-2 border-white/20 group-hover:bg-gold-500 group-hover:border-gold-500 transition-colors -translate-x-1.5 md:-translate-x-2">
+                            </div>
+                            <div class="md:w-5/12 md:pl-10">
+                                <span
+                                    class="text-sm text-gray-500 group-hover:text-gold-500 transition-colors font-mono">2020
+                                    - 2022</span>
+                                <p class="text-gray-300 text-sm mt-2">Led technical teams and oversaw digital strategy
+                                    execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="relative pl-8 md:pl-0">
+                        <div class="hidden md:block absolute left-1/2 -ml-0.5 w-px h-full bg-white/10"></div>
+                        <div class="md:flex items-center justify-between group">
+                            <div class="md:w-5/12 text-left md:text-right md:pr-10 mb-4 md:mb-0">
+                                <h4 class="text-xl font-bold text-white group-hover:text-gold-500 transition-colors">Web
+                                    Developer</h4>
+                                <p class="text-sm text-gray-400">DSM-Properties Ltd</p>
+                            </div>
+                            <div
+                                class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-dark-100 border-2 border-white/20 group-hover:bg-gold-500 group-hover:border-gold-500 transition-colors -translate-x-1.5 md:-translate-x-2">
+                            </div>
+                            <div class="md:w-5/12 md:pl-10">
+                                <span
+                                    class="text-sm text-gray-500 group-hover:text-gold-500 transition-colors font-mono">2019
+                                    - 2020</span>
+                                <p class="text-gray-300 text-sm mt-2">Designed and maintained property listing
+                                    platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="work" class="py-24 bg-dark-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-gold-500 text-sm font-bold tracking-widest uppercase mb-4">My Portfolio</h2>
+                    <h3 class="text-4xl font-playfair font-bold text-white">Recent Works</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div
+                        class="group relative bg-black border border-white/10 rounded-2xl overflow-hidden hover:border-gold-500 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="/assets/project2-Cz54zU_s.png" alt="Majestic Grace Embassy"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="https://majesticgraceembassy.com"
+                                    class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gold-600">View
+                                    Project</a>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h4
+                                class="text-xl font-playfair font-bold mb-2 text-white group-hover:text-gold-500 transition-colors">
+                                Majestic Grace Embassy</h4>
+                            <p class="text-gray-400 text-sm">
+                                A modern church website designed to enhance engagement, inspire faith, and provide
+                                seamless access to sermons, events, and donations.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Bootstrap</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">PHP</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div
+                        class="group relative bg-black border border-white/10 rounded-2xl overflow-hidden hover:border-gold-500 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="/assets/project1-Bl_34JmG.png" alt="Project"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="https://njunkimlegal.com/legalcrm/public"
+                                    class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gold-600">View
+                                    Project</a>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h4
+                                class="text-xl font-playfair font-bold mb-2 text-white group-hover:text-gold-500 transition-colors">
+                                NjunkimLegal CRM</h4>
+                            <p class="text-gray-400 text-sm">
+                                A powerful legal CRM platform built to streamline case management, improve client
+                                communication, and optimize firm operations.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Laravel</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">MySQL</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div
+                        class="group relative bg-black border border-white/10 rounded-2xl overflow-hidden hover:border-gold-500 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="/assets/project3-BoaPvinh.png" alt="AlfonsoAndCompany"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="https://www.alfonsoandcompany.com/"
+                                    class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gold-600">View
+                                    Project</a>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h4
+                                class="text-xl font-playfair font-bold mb-2 text-white group-hover:text-gold-500 transition-colors">
+                                Alfonso & Co.</h4>
+                            <p class="text-gray-400 text-sm">
+                                A sleek corporate website crafted for a global consulting firm. Focused on professional
+                                branding, service clarity, and trust-building.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">WordPress</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">GSAP</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section (Robust with Chat) -->
+        <section id="testimonials" class="py-24 relative overflow-hidden bg-gradient-to-br from-dark-300 to-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-gold-500 text-sm font-bold tracking-widest uppercase mb-4">Feedback</h2>
+                    <h3 class="text-4xl font-playfair font-bold text-white">What Clients Say</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <!-- Text Testimonials Chain -->
+                    <div class="space-y-6">
+                        <div class="bg-white/5 p-8 rounded-2xl border border-gold-500/20">
+                            <p class="text-gray-300 italic mb-4">"Vincent, You're indeed good. You actually delivered
+                                exceptionally. Your attention to detail and expertise in SEO doubled our online
+                                engagement in just three months!"</p>
+                            <h6 class="text-gold-500 font-bold">— Pastor John Adeyemi</h6>
+                            <p class="text-xs text-gold-500">MajesticGraceEmbassy</p>
+                        </div>
+                        <div class="bg-white/5 p-8 rounded-2xl border border-gold-500/20">
+                            <p class="text-gray-300 italic mb-4">"Working with you was a pleasure, Vincent. The CRM is
+                                really a user-friendly platform and it significantly improved our firm’s efficiency."
+                            </p>
+                            <h6 class="text-gold-500 font-bold">— CEO, NjunkimLegal</h6>
+                            <p class="text-xs text-gold-500">NjunkimLegal</p>
+                        </div>
+                        <div class="bg-white/5 p-8 rounded-2xl border border-gold-500/20">
+                            <p class="text-gray-300 italic mb-4">
+                                "Baba, your expertise in web development and design gave us confidence in our new
+                                corporate
+                                site. Your work is truly world-class."
+                            </p>
+                            <h6 class="text-gold-500 font-bold">— Richard Ademola</h6>
+                            <p class="text-xs text-gold-500">AlfonsoAndCompany</p>
+                        </div>
+                    </div>
+
+                    <!-- Chat Testimonial (The Unique Feature) -->
+                    <div class="bg-white/5 p-8 rounded-3xl border border-gold-500/20 max-w-md mx-auto">
+                        <h4 class="text-white font-bold mb-6 text-center">Referral Feedback</h4>
+
+                        <div class="space-y-4 font-sans text-sm">
+                            <!-- Item -->
+                            <div class="flex flex-col items-start max-w-[85%]">
+                                <div class="bg-gray-200 text-black px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm">
+                                    <p>Your man is good in what he does. He hasn't finished yet, but what I see is
+                                        amazing.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item -->
+                            <div class="flex flex-col items-start max-w-[85%]">
+                                <div class="bg-gray-700 text-white px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm">
+                                    <p>What you said about him is absolutely right 💯</p>
+                                </div>
+                            </div>
+
+                            <!-- Response -->
+                            <div class="flex flex-col items-end max-w-[85%] ml-auto">
+                                <div class="bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-br-sm shadow-sm">
+                                    <p>Smiles… that's why I recommended him. I have seen his work and I know he is very
+                                        good at it.</p>
+                                </div>
+                            </div>
+
+                            <!-- Response -->
+                            <div class="flex flex-col items-end max-w-[85%] ml-auto">
+                                <div class="bg-green-600 text-white px-4 py-3 rounded-2xl rounded-br-sm shadow-sm">
+                                    <p>I’m happy you are satisfied with his work.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-gray-500 text-xs mt-6">— WhatsApp Chat Testimonial</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact Section -->
+        <section id="contact" class="py-24 relative overflow-hidden text-center bg-zinc-900 border-t border-white/5">
+            <!-- Background Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-black/50"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">Ready to Scale Your Brand?</h2>
+                <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
+                    I am currently available for freelance projects and full-time opportunities.
+                    Let's build something that makes a difference.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
+                    <a href="mailto:vincentagber74@gmail.com"
+                        class="px-8 py-4 bg-gold-500 text-white font-bold rounded-full hover:bg-gold-600 transition-colors shadow-lg shadow-gold-500/20">
+                        Start a Project
+                    </a>
+                    <a href="/src/assets/Vincent_Agber.pdf" download
+                        class="px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white hover:text-black transition-all duration-300">
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 border-t border-white/10 bg-black text-center relative z-10">
+            <div class="container mx-auto px-6">
+                <div
+                    class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 text-white mb-8 space-x-0 md:space-x-8">
+                    <a href="#about" class="hover:text-gold-500 transition-colors">About</a>
+                    <a href="#work" class="hover:text-gold-500 transition-colors">Work</a>
+                    <a href="#contact" class="hover:text-gold-500 transition-colors">Contact</a>
+                </div>
+
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://github.com/vincentagber" target="_blank"
+                        class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/agbervincent" target="_blank"
+                        class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com/superlink.it" target="_blank"
+                        class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:vincentagber74@gmail.com"
+                        class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 Vincent Agber. Designed & Built with Precision.
+                </p>
+            </div>
+        </footer>
+
+        <!-- Back to Top -->
+        <a href="#home" id="back-to-top"
+            class="fixed bottom-8 right-8 w-12 h-12 bg-gold-500 text-black rounded-full flex items-center justify-center shadow-lg transform translate-y-20 opacity-0 transition-all duration-500 z-40 hover:scale-110">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
+        <!-- Vite Entry Point -->
+</body>
+
+</html>

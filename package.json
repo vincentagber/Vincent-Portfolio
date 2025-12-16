@@ -1,0 +1,32 @@
+{
+  "name": "vincent-portfolio",
+  "version": "1.0.0",
+  "description": "Welcome to the Vincent Agber Portfolio repository! This project showcases the portfolio website of Vincent Agber, a seasoned front-end developer with a strong track record in the industry.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincentagber/Vincent-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vincentagber/Vincent-Portfolio/issues"
+  },
+  "homepage": "https://github.com/vincentagber/Vincent-Portfolio#readme",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.3.0"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2"
+  }
+}
