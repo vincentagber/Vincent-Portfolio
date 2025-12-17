@@ -4,6 +4,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Respect reduced motion
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Custom Cursor Logic
 const cursor = document.getElementById('cursor');
 const cursorDot = document.getElementById('cursor-dot');
@@ -27,16 +30,44 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 }
 
 // Hero Animation
-const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+if (!reducedMotion) {
+    // split headline into characters for a refined entrance
+    function splitIntoChars(selector) {
+        const el = document.querySelector(selector);
+        if (!el) return;
+        const text = el.textContent.trim();
+        el.setAttribute('aria-label', text);
+        el.innerHTML = text.split('').map(char => {
+            if (char === ' ') return '<span class="char">&nbsp;</span>';
+            return `<span class="char">${char}</span>`;
+        }).join('');
+        // make sure chars are inline-block for animation
+        el.querySelectorAll('.char').forEach(c => c.style.display = 'inline-block');
+    }
 
-heroTimeline
-    .to(".reveal-hero", {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        delay: 0.2
+    splitIntoChars('.hero-headline');
+
+    const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTimeline
+        .from('.hero-headline .char', { y: 28, opacity: 0, duration: 0.9, stagger: 0.03 })
+        .from('.hero-sub', { y: 18, opacity: 0, duration: 0.7 }, '-=0.55')
+        .from('.reveal-hero', { y: 16, opacity: 0, duration: 0.6, stagger: 0.1 }, '-=0.45');
+
+    // subtle parallax for illustration tied to scroll
+    gsap.to('.hero-illustration', {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '#home',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.6
+        }
     });
+} else {
+    // If reduced motion preferred, ensure elements are visible
+    document.querySelectorAll('.reveal-hero').forEach(el => el.style.opacity = 1);
+}
 
 // Navigation Logic
 const navbar = document.getElementById('navbar');
@@ -59,9 +90,10 @@ const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 let isMenuOpen = false;
-
 menuToggle.addEventListener('click', () => {
     isMenuOpen = !isMenuOpen;
+    menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isMenuOpen));
 
     if (isMenuOpen) {
         mobileMenu.style.transform = "translateX(0)";
@@ -73,11 +105,18 @@ menuToggle.addEventListener('click', () => {
             stagger: 0.1,
             delay: 0.3
         });
-        menuToggle.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+        menuToggle.innerHTML = '<i class="fas fa-times text-xl md:text-2xl"></i>';
+        // move focus to first mobile link for keyboard users
+        setTimeout(() => {
+            const first = mobileLinks[0];
+            if (first && typeof first.focus === 'function') first.focus();
+        }, 350);
     } else {
         mobileMenu.style.transform = "translateX(100%)";
         document.body.style.overflow = "";
-        menuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+        menuToggle.innerHTML = '<i class="fas fa-bars text-xl md:text-2xl"></i>';
+        // return focus to the toggle
+        menuToggle.focus();
     }
 });
 
