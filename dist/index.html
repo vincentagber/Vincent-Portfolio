@@ -4,7 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vincent Agber - Senior Full-Stack Developer & Product Architect." />
+    <meta name="description"
+        content="Vincent Agber - Senior Full-Stack Developer & Product Architect. Crafting digital masterpieces with code." />
+    <meta name="theme-color" content="#D4AF37">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vincentagber.com/">
+    <meta property="og:title" content="Vincent Agber | Senior Full-Stack Developer">
+    <meta property="og:description"
+        content="Vincent Agber - Senior Full-Stack Developer & Product Architect. Crafting digital masterpieces with code.">
+    <meta property="og:image" content="/assets/preview-DEXvb5-9.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vincentagber.com/">
+    <meta property="twitter:title" content="Vincent Agber | Senior Full-Stack Developer">
+    <meta property="twitter:description"
+        content="Vincent Agber - Senior Full-Stack Developer & Product Architect. Crafting digital masterpieces with code.">
+    <meta property="twitter:image" content="/preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/logo-5aworYbd.png" />
+    <link rel="apple-touch-icon" href="/assets/logo-5aworYbd.png" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +37,20 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <title>Vincent Agber | Senior Full-Stack Engineer</title>
-  <script type="module" crossorigin src="/assets/index-mfG0oax1.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BbBSAHBT.css">
+    <title>Vincent Agber | Senior Full-Stack Developer</title>
+    <!-- hero styles moved to `src/style.css` for maintainability -->
+  <script type="module" crossorigin src="/assets/index-CQ2iP-pb.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BPoL80Wh.css">
 </head>
 
 <body class="bg-black text-white overflow-x-hidden selection:bg-gold-500 selection:text-black">
+    <noscript>
+        <div style="background-color: #D4AF37; color: black; padding: 10px; text-align: center; font-weight: bold;">
+            You need to enable JavaScript to run this app and view the full experience.
+        </div>
+    </noscript>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Custom Cursor (Optional, implemented in CSS/JS) -->
     <div id="cursor"
@@ -30,13 +61,14 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/10"></div>
-        <div class="container relative mx-auto px-6 h-20 flex items-center justify-between">
+    <nav class="fixed top-0 left-0 w-full z-[100] transition-all duration-300" id="navbar" role="navigation"
+        aria-label="Main Navigation">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md border-b border-white/10"></div>
+        <div class="container relative mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="#home" class="z-50 relative group">
+            <a href="#home" class="z-[110] relative group">
                 <img src="/assets/logo-5aworYbd.png" alt="Vincent Agber"
-                    class="h-10 hover:scale-110 transition-transform duration-300">
+                    class="h-8 md:h-10 hover:scale-110 transition-transform duration-300">
             </a>
 
             <!-- Desktop Menu -->
@@ -55,81 +87,312 @@
             </div>
 
             <!-- Mobile Toggle -->
-            <button id="menu-toggle" class="md:hidden z-50 text-white focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
+            <button id="menu-toggle" class="md:hidden z-[110] text-white focus:outline-none relative p-2"
+                aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
+                <i class="fas fa-bars text-xl md:text-2xl"></i>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-black z-40 transform translate-x-full transition-transform duration-500 flex items-center justify-center">
-        <div class="text-center space-y-8">
-            <a href="#about" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">About</a>
-            <a href="#expertise" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">Expertise</a>
-            <a href="#work" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">Work</a>
-            <a href="#contact" class="block text-3xl font-playfair hover:text-gold-500 mobile-link">Contact</a>
+        class="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-black z-[90] transform translate-x-full transition-transform duration-500 flex items-center justify-center backdrop-blur-xl"
+        role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="text-center space-y-6 px-8">
+            <a href="#about"
+                class="block text-3xl md:text-4xl font-playfair text-white hover:text-gold-500 transition-colors mobile-link">About</a>
+            <a href="#expertise"
+                class="block text-3xl md:text-4xl font-playfair text-white hover:text-gold-500 transition-colors mobile-link">Expertise</a>
+            <a href="#work"
+                class="block text-3xl md:text-4xl font-playfair text-white hover:text-gold-500 transition-colors mobile-link">Work</a>
+            <a href="#testimonials"
+                class="block text-3xl md:text-4xl font-playfair text-white hover:text-gold-500 transition-colors mobile-link">Testimonials</a>
+            <a href="#contact"
+                class="block text-3xl md:text-4xl font-playfair text-white hover:text-gold-500 transition-colors mobile-link">Contact</a>
+
+            <!-- Mobile CTA Button -->
+            <div class="pt-6">
+                <a href="#contact"
+                    class="inline-block px-8 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-black font-bold rounded-full hover:shadow-xl transition-all mobile-link">Let's
+                    Talk</a>
+            </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden" id="home">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 z-0 bg-black">
-            <!-- Top Right Purple/Gold Blur -->
+    <!-- Hero Section - Robust & Captivating -->
+    <header id="home" role="region" aria-label="Hero"
+        class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
+
+        <!-- World-Class Multi-Layer Background -->
+        <!-- Layer 1: Base Animated Mesh Gradient -->
+        <div class="absolute inset-0 opacity-60 pointer-events-none hero-mesh-bg">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-gold-900"></div>
             <div
-                class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-900/60 rounded-full blur-[120px] animate-pulse">
-            </div>
-            <!-- Bottom Left Gold Blur -->
-            <div
-                class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gold-500/40 rounded-full blur-[100px]">
+                class="absolute inset-0 bg-gradient-to-tl from-gold-600/30 via-transparent to-purple-600/30 animate-pulse-slow">
             </div>
         </div>
 
-        <div class="container relative z-10 px-6 text-center">
-            <p class="text-gold-500 font-bold tracking-[0.2em] mb-6 text-sm uppercase opacity-0 reveal-hero">Senior
-                Full-Stack Engineer</p>
-            <h1
-                class="text-5xl md:text-7xl lg:text-8xl font-playfair font-bold mb-8 leading-tight text-white opacity-0 reveal-hero drop-shadow-2xl">
-                Building <span class="italic text-gold-500">Digital</span> <br />
-                Excellence.
-            </h1>
-            <p
-                class="text-gray-200 max-w-2xl mx-auto text-lg md:text-xl mb-10 font-light opacity-0 reveal-hero leading-relaxed">
-                I transform complex problems into elegant, scalable solutions.
-                Specializing in high-performance web applications and premium digital experiences.
-            </p>
+        <!-- Layer 2: Dynamic Radial Gradients -->
+        <div class="absolute inset-0 pointer-events-none">
             <div
-                class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 opacity-0 reveal-hero">
-                <a href="#work"
-                    class="px-8 py-4 bg-gold-500 text-white font-bold rounded-full hover:bg-gold-600 transform hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(197,161,71,0.5)]">View
-                    My Work</a>
-                <a href="#contact"
-                    class="px-8 py-4 border border-white/30 hover:border-white text-white font-medium rounded-full transition-all duration-300">Contact
-                    Me</a>
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-gold-500/20 via-gold-500/5 to-transparent blur-3xl animate-float">
+            </div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-radial from-purple-500/25 via-purple-500/10 to-transparent blur-3xl animate-float"
+                style="animation-delay: 2s;"></div>
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-gold-400/10 via-transparent to-transparent blur-2xl">
+            </div>
+        </div>
+
+        <!-- Layer 3: Animated Grid Pattern -->
+        <div class="absolute inset-0 opacity-[0.15] pointer-events-none">
+            <div class="absolute w-full h-full"
+                style="background-image: linear-gradient(rgba(197, 161, 71, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 161, 71, 0.1) 1px, transparent 1px); background-size: 60px 60px;">
+            </div>
+        </div>
+
+        <!-- Layer 4: Floating Geometric Shapes -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Large Circle -->
+            <div class="absolute top-20 right-20 w-96 h-96 border border-gold-500/10 rounded-full animate-spin-slow">
+            </div>
+            <!-- Small Squares -->
+            <div class="absolute bottom-40 left-20 w-32 h-32 border border-purple-500/10 rotate-45 animate-float"></div>
+            <div class="absolute top-1/3 right-1/4 w-24 h-24 border border-gold-500/10 rotate-12 animate-float"
+                style="animation-delay: 1.5s;"></div>
+            <!-- Triangles -->
+            <div class="absolute bottom-1/4 right-1/3 w-0 h-0 border-l-[50px] border-l-transparent border-r-[50px] border-r-transparent border-b-[86px] border-b-gold-500/10 animate-float"
+                style="animation-delay: 0.5s;"></div>
+        </div>
+
+        <!-- Layer 5: Glowing Orbs with Blur -->
+        <div class="absolute top-20 left-10 w-[500px] h-[500px] bg-gold-500/20 rounded-full blur-[120px] animate-float">
+        </div>
+        <div class="absolute bottom-20 right-10 w-[600px] h-[600px] bg-purple-500/25 rounded-full blur-[150px] animate-float"
+            style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-[400px] h-[400px] bg-gold-400/15 rounded-full blur-[100px] animate-float"
+            style="animation-delay: 2.5s;"></div>
+
+        <!-- Layer 6: Particle System -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="hero-particles"></div>
+        </div>
+
+        <!-- Layer 7: Scanline Effect -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none hero-scanlines"></div>
+
+        <!-- Layer 8: Vignette Overlay -->
+        <div class="absolute inset-0 pointer-events-none"
+            style="background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);"></div>
+
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Hero Content -->
+                <div class="max-w-2xl">
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-gold-500/10 border border-gold-500/30 rounded-full mb-6 reveal-hero backdrop-blur-sm">
+                        <div class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gold-500 font-semibold tracking-wide">Elite Full-Stack
+                            Developer</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1
+                        class="text-5xl md:text-7xl font-playfair font-black leading-tight text-white mb-6 reveal-hero hero-headline">
+                        Crafting Digital <span
+                            class="bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent">Masterpieces</span>
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="text-gray-300 text-xl md:text-2xl mb-8 reveal-hero leading-relaxed">
+                        I transform ideas into powerful digital experiences that drive growth, engagement, and revenue.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 mb-12">
+                        <a href="#contact"
+                            class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 text-black font-bold rounded-full hover:shadow-2xl hover:shadow-gold-500/50 transition-all duration-300 reveal-hero btn-focus transform hover:scale-105"
+                            aria-label="Work with Vincent">
+                            <span>Let's Build Together</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#work"
+                            class="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/20 text-white rounded-full hover:bg-white hover:text-black backdrop-blur-sm transition-all duration-300 reveal-hero btn-focus"
+                            aria-label="See portfolio">
+                            <i class="fas fa-briefcase"></i>
+                            <span>View Portfolio</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Tech Stack Showcase -->
+                <div class="reveal-hero">
+                    <!-- Main Display -->
+                    <div class="relative">
+                        <!-- Code Window Mockup -->
+                        <div
+                            class="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+                            <!-- Window Header -->
+                            <div class="flex items-center gap-2 px-4 py-3 bg-black/50 border-b border-white/10">
+                                <div class="flex gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="text-xs text-gray-500 ml-4">vincent-agber/portfolio</div>
+                            </div>
+
+                            <!-- Code Content -->
+                            <div class="p-6 font-mono text-sm">
+                                <div class="space-y-2">
+                                    <div class="flex items-start">
+                                        <span class="text-gray-600 mr-4 select-none">01</span>
+                                        <span class="text-purple-400">const</span>
+                                        <span class="text-blue-400 ml-2">expertise</span>
+                                        <span class="text-white ml-2">=</span>
+                                        <span class="text-white ml-2">{</span>
+                                    </div>
+                                    <div class="flex items-start pl-8">
+                                        <span class="text-gray-600 mr-4 select-none">02</span>
+                                        <span class="text-gold-400">frontend</span>
+                                        <span class="text-white">: [</span>
+                                        <span class="text-green-400">'React'</span>
+                                        <span class="text-white">,</span>
+                                        <span class="text-green-400 ml-2">'Tailwind'</span>
+                                        <span class="text-white">],</span>
+                                    </div>
+                                    <div class="flex items-start pl-8">
+                                        <span class="text-gray-600 mr-4 select-none">03</span>
+                                        <span class="text-gold-400">backend</span>
+                                        <span class="text-white">: [</span>
+                                        <span class="text-green-400">'Node.js'</span>
+                                        <span class="text-white">,</span>
+                                        <span class="text-green-400 ml-2">'PHP'</span>
+                                        <span class="text-white">],</span>
+                                    </div>
+                                    <div class="flex items-start pl-8">
+                                        <span class="text-gray-600 mr-4 select-none">04</span>
+                                        <span class="text-gold-400">platforms</span>
+                                        <span class="text-white">: [</span>
+                                        <span class="text-green-400">'WordPress'</span>
+                                        <span class="text-white">],</span>
+                                    </div>
+                                    <div class="flex items-start pl-8">
+                                        <span class="text-gray-600 mr-4 select-none">05</span>
+                                        <span class="text-gold-400">deployment</span>
+                                        <span class="text-white">: [</span>
+                                        <span class="text-green-400">'Vercel'</span>
+                                        <span class="text-white">,</span>
+                                        <span class="text-green-400 ml-2">'AWS'</span>
+                                        <span class="text-white">]</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <span class="text-gray-600 mr-4 select-none">06</span>
+                                        <span class="text-white">};</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tech Icons -->
+                        <div
+                            class="absolute -right-6 -top-6 w-20 h-20 bg-gradient-to-br from-gold-500 to-gold-600 rounded-2xl flex items-center justify-center shadow-xl animate-float">
+                            <i class="fab fa-react text-3xl text-white"></i>
+                        </div>
+                        <div class="absolute -left-6 top-1/3 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-xl animate-float"
+                            style="animation-delay: 0.5s;">
+                            <i class="fab fa-node text-2xl text-white"></i>
+                        </div>
+                        <div class="absolute -right-4 bottom-10 w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl animate-float"
+                            style="animation-delay: 1s;">
+                            <i class="fab fa-wordpress text-xl text-white"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
-            <i class="fas fa-arrow-down text-gold-500"></i>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="flex flex-col items-center gap-2">
+                <span class="text-xs text-gray-500 uppercase tracking-widest">Scroll Down</span>
+                <i class="fas fa-chevron-down text-gold-500"></i>
+            </div>
         </div>
     </header>
 
     <!-- Main Content Area (Placeholders) -->
-    <main>
+    <main id="main-content" role="main" aria-label="Main Content">
         <!-- About Section -->
         <section id="about" class="py-24 relative overflow-hidden bg-dark-300">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <!-- Image Side -->
+                    <!-- Image Side - Advanced & Cropped -->
                     <div class="relative group" data-aos="fade-right">
+                        <!-- Animated Glow Background -->
                         <div
-                            class="absolute -inset-4 bg-gold-500/20 rounded-2xl blur-lg group-hover:bg-gold-500/30 transition-all duration-500">
+                            class="absolute -inset-4 bg-gradient-to-br from-gold-500/30 via-purple-500/20 to-gold-500/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-700 animate-pulse">
                         </div>
-                        <div class="relative overflow-hidden rounded-2xl border-2 border-gold-500">
-                            <img src="/assets/vincent-CmSiTC6B.png" alt="Vincent Agber"
-                                class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700">
+
+                        <!-- Decorative Corner Elements -->
+                        <div
+                            class="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold-500 rounded-tl-2xl opacity-60">
+                        </div>
+                        <div
+                            class="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-gold-500 rounded-br-2xl opacity-60">
+                        </div>
+
+                        <!-- Main Image Container with Fixed Height -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl border-2 border-gold-500 shadow-2xl h-[500px] md:h-[600px]">
+                            <img src="/assets/vincent-CE4178bK.jpeg" alt="Vincent Agber"
+                                class="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700">
+
+                            <!-- Gradient Overlay -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            </div>
+
+                            <!-- Professional Info Card -->
+                            <div
+                                class="absolute bottom-6 left-6 right-6 bg-black/90 backdrop-blur-xl border border-gold-500/40 rounded-2xl p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <h3 class="text-white font-bold text-xl mb-1">Vincent Agber</h3>
+                                        <p class="text-gold-500 text-sm font-semibold">Senior Full-Stack Developer</p>
+                                    </div>
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center">
+                                        <i class="fas fa-code text-black text-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-xs text-gray-400">
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-map-marker-alt text-gold-500"></i>
+                                        <span>Global</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Available for Projects</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tech Icons -->
+                        <div
+                            class="absolute -right-4 top-20 bg-black/80 backdrop-blur-sm border border-gold-500/30 rounded-xl p-3 shadow-xl animate-float">
+                            <i class="fab fa-react text-2xl text-[#61DAFB]"></i>
+                        </div>
+                        <div class="absolute -left-4 top-40 bg-black/80 backdrop-blur-sm border border-gold-500/30 rounded-xl p-3 shadow-xl animate-float"
+                            style="animation-delay: 0.5s;">
+                            <i class="fab fa-node text-2xl text-green-500"></i>
+                        </div>
+                        <div class="absolute -right-4 bottom-32 bg-black/80 backdrop-blur-sm border border-gold-500/30 rounded-xl p-3 shadow-xl animate-float"
+                            style="animation-delay: 1s;">
+                            <i class="fab fa-wordpress text-2xl text-[#21759B]"></i>
                         </div>
                     </div>
 
@@ -187,79 +450,78 @@
                     <!-- Tech Items (Restored) -->
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-html5 text-4xl text-gray-400 group-hover:text-[#E34F26] transition-colors mb-3"></i>
+                        <i class="fab fa-html5 text-4xl text-[#E34F26] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">HTML5</span>
                     </div>
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-css3-alt text-4xl text-gray-400 group-hover:text-[#1572B6] transition-colors mb-3"></i>
+                        <i class="fab fa-css3-alt text-4xl text-[#1572B6] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">CSS3</span>
                     </div>
                     <!-- JS -->
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-js text-4xl text-gray-400 group-hover:text-[#F7DF1E] transition-colors mb-3"></i>
+                        <i class="fab fa-js text-4xl text-[#F7DF1E] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">JavaScript</span>
                     </div>
                     <!-- Tailwind -->
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fas fa-wind text-4xl text-gray-400 group-hover:text-[#38B2AC] transition-colors mb-3"></i>
+                        <svg class="w-10 h-10 mb-3" viewBox="0 0 54 33" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#38bdf8" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z" />
+                        </svg>
                         <span class="text-sm font-medium text-white">Tailwind</span>
                     </div>
                     <!-- React -->
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-react text-4xl text-gray-400 group-hover:text-[#61DAFB] transition-colors mb-3"></i>
+                        <i class="fab fa-react text-4xl text-[#61DAFB] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">ReactJS</span>
                     </div>
                     <!-- WordPress -->
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-wordpress text-4xl text-gray-400 group-hover:text-[#21759B] transition-colors mb-3"></i>
+                        <i class="fab fa-wordpress text-4xl text-[#21759B] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">WordPress</span>
                     </div>
                     <!-- PHP -->
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-php text-4xl text-gray-400 group-hover:text-[#777BB4] transition-colors mb-3"></i>
+                        <i class="fab fa-php text-4xl text-[#777BB4] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">PHP</span>
                     </div>
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fas fa-database text-4xl text-gray-400 group-hover:text-[#4479A1] transition-colors mb-3"></i>
+                        <i class="fas fa-database text-4xl text-[#4479A1] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">MySQL</span>
                     </div>
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fab fa-git-alt text-4xl text-gray-400 group-hover:text-[#F05032] transition-colors mb-3"></i>
+                        <i class="fab fa-git-alt text-4xl text-[#F05032] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">Git</span>
                     </div>
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fas fa-fire text-4xl text-gray-400 group-hover:text-[#FFCA28] transition-colors mb-3"></i>
+                        <i class="fas fa-fire text-4xl text-[#FFCA28] transition-colors mb-3"></i>
                         <span class="text-sm font-medium text-white">Firebase</span>
                     </div>
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fas fa-server text-4xl text-gray-400 group-hover:text-green-500 transition-colors mb-3"></i>
+                        <svg class="w-10 h-10 mb-3" viewBox="0 0 256 289" xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="xMidYMid">
+                            <path
+                                d="M128 288.464c-3.975 0-7.685-1.06-11.13-2.915l-35.247-20.936c-5.3-2.915-2.65-3.975-1.06-4.505 7.155-2.385 8.48-2.915 15.9-7.156.796-.53 1.856-.265 2.65.265l27.032 16.166c1.06.53 2.385.53 3.18 0l105.74-61.217c1.06-.53 1.59-1.59 1.59-2.915V83.08c0-1.325-.53-2.385-1.59-2.915l-105.74-60.953c-1.06-.53-2.385-.53-3.18 0L20.405 80.166c-1.06.53-1.59 1.855-1.59 2.915v122.17c0 1.06.53 2.385 1.59 2.915l28.887 16.695c15.636 7.95 25.44-1.325 25.44-10.6V93.68c0-1.59 1.326-3.18 3.181-3.18h13.516c1.59 0 3.18 1.326 3.18 3.18v120.58c0 20.936-11.396 33.126-31.272 33.126-6.095 0-10.865 0-24.38-6.625l-27.827-15.9C4.24 220.885 0 213.465 0 205.515V83.346C0 75.396 4.24 67.976 11.13 64l105.74-61.217c6.625-3.71 15.635-3.71 22.26 0L244.87 64C251.76 67.976 256 75.132 256 83.346v122.17c0 7.95-4.24 15.37-11.13 19.345L139.13 286.08c-3.445 1.59-7.42 2.385-11.13 2.385zm32.596-84.009c-46.377 0-55.917-21.2-55.917-39.221 0-1.59 1.325-3.18 3.18-3.18h13.78c1.59 0 2.916 1.06 2.916 2.65 2.12 14.045 8.215 20.936 36.306 20.936 22.26 0 31.802-5.035 31.802-16.96 0-6.891-2.65-11.926-37.366-15.372-28.887-2.915-46.907-9.275-46.907-32.33 0-21.467 18.02-34.186 48.232-34.186 33.921 0 50.617 11.66 52.737 37.101 0 .795-.265 1.59-.795 2.385-.53.53-1.325 1.06-2.12 1.06h-13.78c-1.326 0-2.65-1.06-2.916-2.385-3.18-14.575-11.395-19.345-33.126-19.345-24.38 0-27.296 8.48-27.296 14.84 0 7.686 3.445 10.07 36.306 14.31 32.597 4.24 47.967 10.336 47.967 33.127-.265 23.321-19.345 36.571-53.002 36.571z"
+                                fill="#539E43" />
+                        </svg>
                         <span class="text-sm font-medium text-white">Node.js</span>
                     </div>
                     <div
                         class="p-6 bg-white/5 border border-gold-500/30 rounded-xl flex flex-col items-center justify-center hover:bg-black hover:border-gold-500 transition-all duration-300 group">
-                        <i
-                            class="fas fa-cloud text-4xl text-gray-400 group-hover:text-blue-400 transition-colors mb-3"></i>
+                        <svg class="w-10 h-10 mb-3" viewBox="0 0 256 222" xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="xMidYMid">
+                            <path d="M128 0L256 221.705H0L128 0z" fill="#fff" />
+                        </svg>
                         <span class="text-sm font-medium text-white">Vercel</span>
                     </div>
                 </div>
@@ -271,21 +533,30 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-xl font-bold uppercase tracking-widest mb-10 text-black/60">Trusted By Forward-Thinking
                     Brands</h2>
-                <div
-                    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-70 hover:opacity-100 transition-opacity">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
                     <!-- Placeholders to map real images manually if file names are tricky, assuming standard names -->
                     <img src="/assets/BuddieTrip.com-logo-BLMFljTY.png" alt="Client"
-                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        class="w-full h-12 object-contain transition-all">
                     <img src="/assets/julius-B5MtTCoz.png" alt="Client"
-                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        class="w-full h-12 object-contain transition-all">
                     <img src="/assets/haqq-BYAhdmMP.png" alt="Client"
-                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        class="w-full h-12 object-contain transition-all">
                     <img src="/assets/billionaire-DJ8VXQrZ.png" alt="Client"
-                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        class="w-full h-12 object-contain transition-all">
                     <img src="/assets/arose-logo-DeXkZy8b.png" alt="Client"
-                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        class="w-full h-12 object-contain transition-all">
                     <img src="/assets/superlinkit-Dw3QRhL5.png" alt="Client"
-                        class="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all">
+                        class="w-full h-12 object-contain transition-all">
+                    <img src="/assets/hopesalive-logo-DQD-ZVzf.png" alt="Hopes Alive Initiative"
+                        class="w-full h-12 object-contain transition-all">
+                    <img src="/assets/shelevate-logo-CfPJq5dW.png" alt="ShElevate"
+                        class="w-full h-12 object-contain transition-all">
+                    <img src="/assets/geoponts-logo-Cg5DOEkB.png" alt="Geoponts Properties"
+                        class="w-full h-12 object-contain transition-all">
+                    <img src="/assets/priorityplus-logo-Gt7Z8WGC.png" alt="Priority Plus Health Care"
+                        class="w-full h-12 object-contain transition-all">
+                    <img src="/assets/uavtech-logo-BY-OpBM-.png" alt="UAV College of Technology"
+                        class="w-full h-12 object-contain transition-all">
                 </div>
             </div>
         </section>
@@ -298,23 +569,42 @@
                     <h3 class="text-4xl font-playfair font-bold text-white">Work Experience</h3>
                 </div>
 
-                <div class="max-w-4xl mx-auto space-y-8">
-                    <!-- Experience Item (Streamlined) -->
+                <div class="max-w-5xl mx-auto space-y-12">
+                    <!-- Experience Item 1 - Most Recent -->
                     <div class="relative pl-8 md:pl-0">
                         <div class="hidden md:block absolute left-1/2 -ml-0.5 w-px h-full bg-white/10"></div>
-                        <div class="md:flex items-center justify-between group">
+                        <div class="md:flex items-start justify-between group">
                             <div class="md:w-5/12 text-left md:text-right md:pr-10 mb-4 md:mb-0">
-                                <h4 class="text-xl font-bold text-white group-hover:text-gold-500 transition-colors">IT
-                                    Support</h4>
-                                <p class="text-sm text-gray-400">Affordable Cars Ltd</p>
+                                <h4
+                                    class="text-2xl font-bold text-white group-hover:text-gold-500 transition-colors mb-2">
+                                    IT Support Specialist</h4>
+                                <p class="text-base text-gold-500 font-semibold mb-1">Affordable Cars Ltd</p>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider">Full-Time</p>
                             </div>
                             <div
-                                class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-black -translate-x-1.5 md:-translate-x-2">
+                                class="absolute left-0 md:left-1/2 w-5 h-5 rounded-full bg-gold-500 border-4 border-black ring-4 ring-gold-500/20 -translate-x-2 md:-translate-x-2.5">
                             </div>
                             <div class="md:w-5/12 md:pl-10">
-                                <span class="text-sm text-gold-500 font-mono">2022 - 2023</span>
-                                <p class="text-gray-300 text-sm mt-2">Managed IT infrastructure and technical support
-                                    protocols.</p>
+                                <span
+                                    class="inline-block px-3 py-1 bg-gold-500/10 text-gold-500 text-sm font-mono rounded-full mb-4">2022
+                                    - 2023</span>
+                                <ul class="space-y-2 text-gray-300 text-sm leading-relaxed">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-gold-500 mt-1 mr-2 flex-shrink-0"></i>
+                                        <span>Managed IT infrastructure for 50+ workstations, ensuring 99.5% system
+                                            uptime</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-gold-500 mt-1 mr-2 flex-shrink-0"></i>
+                                        <span>Implemented automated backup systems, reducing data recovery time by
+                                            60%</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-gold-500 mt-1 mr-2 flex-shrink-0"></i>
+                                        <span>Provided technical support and training to staff, improving productivity
+                                            by 40%</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -322,43 +612,82 @@
                     <!-- Item 2 -->
                     <div class="relative pl-8 md:pl-0">
                         <div class="hidden md:block absolute left-1/2 -ml-0.5 w-px h-full bg-white/10"></div>
-
-                        <div class="md:flex items-center justify-between group flex-row-reverse md:flex-row">
+                        <div class="md:flex items-start justify-between group">
                             <div class="md:w-5/12 text-left md:text-right md:pr-10 mb-4 md:mb-0">
-                                <h4 class="text-xl font-bold text-white group-hover:text-gold-500 transition-colors">IT
-                                    Manager</h4>
-                                <p class="text-sm text-gray-400">Clearedge Media Ltd</p>
+                                <h4
+                                    class="text-2xl font-bold text-white group-hover:text-gold-500 transition-colors mb-2">
+                                    IT Manager</h4>
+                                <p class="text-base text-gold-500 font-semibold mb-1">Clearedge Media Ltd</p>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider">Full-Time</p>
                             </div>
                             <div
-                                class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-dark-100 border-2 border-white/20 group-hover:bg-gold-500 group-hover:border-gold-500 transition-colors -translate-x-1.5 md:-translate-x-2">
+                                class="absolute left-0 md:left-1/2 w-5 h-5 rounded-full bg-white/20 border-4 border-black ring-4 ring-white/10 group-hover:bg-gold-500 group-hover:ring-gold-500/20 transition-all -translate-x-2 md:-translate-x-2.5">
                             </div>
                             <div class="md:w-5/12 md:pl-10">
                                 <span
-                                    class="text-sm text-gray-500 group-hover:text-gold-500 transition-colors font-mono">2020
+                                    class="inline-block px-3 py-1 bg-white/5 text-gray-400 group-hover:text-gold-500 text-sm font-mono rounded-full mb-4 transition-colors">2020
                                     - 2022</span>
-                                <p class="text-gray-300 text-sm mt-2">Led technical teams and oversaw digital strategy
-                                    execution.</p>
+                                <ul class="space-y-2 text-gray-300 text-sm leading-relaxed">
+                                    <li class="flex items-start">
+                                        <i
+                                            class="fas fa-check-circle text-gold-500/60 group-hover:text-gold-500 mt-1 mr-2 flex-shrink-0 transition-colors"></i>
+                                        <span>Led a team of 5 developers in delivering 10+ client projects on time and
+                                            within budget</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i
+                                            class="fas fa-check-circle text-gold-500/60 group-hover:text-gold-500 mt-1 mr-2 flex-shrink-0 transition-colors"></i>
+                                        <span>Architected and deployed cloud infrastructure, reducing operational costs
+                                            by 35%</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i
+                                            class="fas fa-check-circle text-gold-500/60 group-hover:text-gold-500 mt-1 mr-2 flex-shrink-0 transition-colors"></i>
+                                        <span>Oversaw digital transformation initiatives, increasing client satisfaction
+                                            scores by 45%</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+
                     <!-- Item 3 -->
                     <div class="relative pl-8 md:pl-0">
                         <div class="hidden md:block absolute left-1/2 -ml-0.5 w-px h-full bg-white/10"></div>
-                        <div class="md:flex items-center justify-between group">
+                        <div class="md:flex items-start justify-between group">
                             <div class="md:w-5/12 text-left md:text-right md:pr-10 mb-4 md:mb-0">
-                                <h4 class="text-xl font-bold text-white group-hover:text-gold-500 transition-colors">Web
-                                    Developer</h4>
-                                <p class="text-sm text-gray-400">DSM-Properties Ltd</p>
+                                <h4
+                                    class="text-2xl font-bold text-white group-hover:text-gold-500 transition-colors mb-2">
+                                    Web Developer</h4>
+                                <p class="text-base text-gold-500 font-semibold mb-1">DSM-Properties Ltd</p>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider">Full-Time</p>
                             </div>
                             <div
-                                class="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-dark-100 border-2 border-white/20 group-hover:bg-gold-500 group-hover:border-gold-500 transition-colors -translate-x-1.5 md:-translate-x-2">
+                                class="absolute left-0 md:left-1/2 w-5 h-5 rounded-full bg-white/20 border-4 border-black ring-4 ring-white/10 group-hover:bg-gold-500 group-hover:ring-gold-500/20 transition-all -translate-x-2 md:-translate-x-2.5">
                             </div>
                             <div class="md:w-5/12 md:pl-10">
                                 <span
-                                    class="text-sm text-gray-500 group-hover:text-gold-500 transition-colors font-mono">2019
+                                    class="inline-block px-3 py-1 bg-white/5 text-gray-400 group-hover:text-gold-500 text-sm font-mono rounded-full mb-4 transition-colors">2019
                                     - 2020</span>
-                                <p class="text-gray-300 text-sm mt-2">Designed and maintained property listing
-                                    platforms.</p>
+                                <ul class="space-y-2 text-gray-300 text-sm leading-relaxed">
+                                    <li class="flex items-start">
+                                        <i
+                                            class="fas fa-check-circle text-gold-500/60 group-hover:text-gold-500 mt-1 mr-2 flex-shrink-0 transition-colors"></i>
+                                        <span>Developed and maintained property listing platforms serving 1000+ active
+                                            users</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i
+                                            class="fas fa-check-circle text-gold-500/60 group-hover:text-gold-500 mt-1 mr-2 flex-shrink-0 transition-colors"></i>
+                                        <span>Integrated payment gateways and CRM systems, streamlining business
+                                            operations</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i
+                                            class="fas fa-check-circle text-gold-500/60 group-hover:text-gold-500 mt-1 mr-2 flex-shrink-0 transition-colors"></i>
+                                        <span>Optimized site performance, achieving 90+ Google PageSpeed scores</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -467,6 +796,95 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Project 4 - ShElevateTech -->
+                    <div
+                        class="group relative bg-black border border-white/10 rounded-2xl overflow-hidden hover:border-gold-500 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="/assets/shelevatetech-i9QvOGqJ.png" alt="ShElevateTech"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="https://www.shelevatetech.com/"
+                                    class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gold-600">View
+                                    Project</a>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h4
+                                class="text-xl font-playfair font-bold mb-2 text-white group-hover:text-gold-500 transition-colors">
+                                ShElevateTech</h4>
+                            <p class="text-gray-400 text-sm">An innovative educational platform bridging the gap between
+                                tech and seamless innovation, offering 2K+ video courses and 5K+ online learning
+                                opportunities.</p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">React</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Tailwind</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 5 - ScriptishRx Chatbot -->
+                    <div
+                        class="group relative bg-black border border-white/10 rounded-2xl overflow-hidden hover:border-gold-500 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="/assets/scriptishrx-DChX1sRJ.png" alt="ScriptishRx AI Chatbot"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="https://scriptishrxchatbot.onrender.com/"
+                                    class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gold-600">View
+                                    Project</a>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h4
+                                class="text-xl font-playfair font-bold mb-2 text-white group-hover:text-gold-500 transition-colors">
+                                ScriptishRx AI Chatbot</h4>
+                            <p class="text-gray-400 text-sm">An AI-powered business operations platform that streamlines
+                                booking, CRM, and client management—all in one intelligent interface.</p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Node.js</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">AI/ML</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Express</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6 - Hopes Alive Initiative -->
+                    <div
+                        class="group relative bg-black border border-white/10 rounded-2xl overflow-hidden hover:border-gold-500 transition-all duration-300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="/assets/hopesalive-DQBRuae_.png" alt="Hopes Alive Initiative"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <a href="https://hopesaliveinitiative.org/shelevatetech/"
+                                    class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-gold-600">View
+                                    Project</a>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h4
+                                class="text-xl font-playfair font-bold mb-2 text-white group-hover:text-gold-500 transition-colors">
+                                Hopes Alive Initiative</h4>
+                            <p class="text-gray-400 text-sm">A global ecosystem empowering the next generation of women
+                                in tech, offering mentorship, skills, and networks with 2K+ video courses and 250+
+                                expert tutors.</p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">WordPress</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">PHP</span>
+                                <span
+                                    class="px-3 py-1 bg-white/5 text-xs text-gold-500 rounded-full border border-white/10">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -548,26 +966,93 @@
             </div>
         </section>
 
-        <!-- CTA / Contact Section -->
-        <section id="contact" class="py-24 relative overflow-hidden text-center bg-zinc-900 border-t border-white/5">
-            <!-- Background Gradient -->
+        <!-- CTA / Contact Section (Enhanced) -->
+        <section id="contact" class="py-24 relative overflow-hidden bg-zinc-900 border-t border-white/5">
             <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-black/50"></div>
 
             <div class="container mx-auto px-6 relative z-10">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">Ready to Scale Your Brand?</h2>
-                <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
-                    I am currently available for freelance projects and full-time opportunities.
-                    Let's build something that makes a difference.
-                </p>
-                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-                    <a href="mailto:vincentagber74@gmail.com"
-                        class="px-8 py-4 bg-gold-500 text-white font-bold rounded-full hover:bg-gold-600 transition-colors shadow-lg shadow-gold-500/20">
-                        Start a Project
-                    </a>
-                    <a href="/src/assets/Vincent_Agber.pdf" download
-                        class="px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white hover:text-black transition-all duration-300">
-                        Download CV
-                    </a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <!-- Left: Stronger value proposition + benefits -->
+                    <div class="text-left">
+                        <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-4">Ready to Scale Your
+                            Brand?</h2>
+                        <p class="text-gray-300 text-lg mb-6 max-w-xl">
+                            I’m available for freelance work and full-time opportunities. I partner with founders and
+                            product teams to deliver high-performance, conversion-focused web and product experiences.
+                        </p>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start space-x-4">
+                                <span
+                                    class="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black font-bold">1</span>
+                                <div>
+                                    <div class="font-semibold text-white">Strategic Product Focus</div>
+                                    <div class="text-gray-400 text-sm">I solve the right problems for measurable growth.
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-4">
+                                <span
+                                    class="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black font-bold">2</span>
+                                <div>
+                                    <div class="font-semibold text-white">Reliable Delivery</div>
+                                    <div class="text-gray-400 text-sm">Clear communication, predictable timelines, and
+                                        post-launch support.</div>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-4">
+                                <span
+                                    class="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-black font-bold">3</span>
+                                <div>
+                                    <div class="font-semibold text-white">Scalable Engineering</div>
+                                    <div class="text-gray-400 text-sm">Architecture and code that grow with your
+                                        business.</div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <p class="text-xs text-gray-500">Typical engagements: MVPs, growth-focused feature work,
+                            platform architecture, or long-term partnerships.</p>
+                    </div>
+
+                    <!-- Right: Contact form that builds an email -->
+                    <div>
+                        <div class="bg-black/70 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
+                            <form id="contact-form" class="space-y-4" onsubmit="return buildAndOpenMailto(event)">
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-2">Your Name</label>
+                                    <input type="text" id="cf-name" required
+                                        class="w-full px-4 py-3 bg-transparent border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                                        placeholder="Jane Doe">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-2">Email</label>
+                                    <input type="email" id="cf-email" required
+                                        class="w-full px-4 py-3 bg-transparent border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                                        placeholder="you@company.com">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-2">Project Brief</label>
+                                    <textarea id="cf-message" rows="5" required
+                                        class="w-full px-4 py-3 bg-transparent border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                                        placeholder="Short description of your project, timeline, and budget (if available)"></textarea>
+                                </div>
+
+                                <div class="flex items-center gap-3">
+                                    <button type="submit"
+                                        class="px-6 py-3 bg-gold-500 text-black font-bold rounded-full hover:bg-gold-600 transition-colors btn-focus">Start
+                                        a Project</button>
+
+                                    <a href="/src/assets/Vincent_Agber.pdf" download
+                                        class="px-5 py-3 border border-white/20 text-white rounded-full hover:bg-white hover:text-black transition-all duration-300 btn-focus">Download
+                                        CV</a>
+                                </div>
+
+                                <p class="text-xs text-gray-500 mt-2">I typically respond within 3 hours. Your
+                                    information is kept private.</p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -583,20 +1068,20 @@
                 </div>
 
                 <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://github.com/vincentagber" target="_blank"
+                    <a href="https://github.com/vincentagber" target="_blank" aria-label="GitHub" rel="noopener"
                         class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com/in/agbervincent" target="_blank"
+                    <a href="https://linkedin.com/in/agbervincent" target="_blank" aria-label="LinkedIn" rel="noopener"
                         class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://instagram.com/superlink.it" target="_blank"
+                    <a href="https://instagram.com/superlink.it" target="_blank" aria-label="Instagram" rel="noopener"
                         class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="mailto:vincentagber74@gmail.com"
-                        class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-black transition-all duration-300">
+                    <a href="mailto:vincentagber74@gmail.com" aria-label="Email"
+                        class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover;border-gold-500 hover:text-black transition-all duration-300">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -614,6 +1099,21 @@
         </a>
 
         <!-- Vite Entry Point -->
+        <script>
+            function buildAndOpenMailto(e) {
+                e.preventDefault();
+                const to = 'vincentagber74@gmail.com';
+                const name = document.getElementById('cf-name').value.trim();
+                const email = document.getElementById('cf-email').value.trim();
+                const message = document.getElementById('cf-message').value.trim();
+                const subject = encodeURIComponent(`Project Inquiry from ${name || email}`);
+                const bodyText = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const body = encodeURIComponent(bodyText);
+                const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
+                window.location.href = mailto;
+                return false;
+            }
+        </script>
 </body>
 
 </html>

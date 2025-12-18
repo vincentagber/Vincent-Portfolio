@@ -11,7 +11,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 const cursor = document.getElementById('cursor');
 const cursorDot = document.getElementById('cursor-dot');
 
-if (window.matchMedia("(min-width: 768px)").matches) {
+if (window.matchMedia("(min-width: 768px)").matches && cursor && cursorDot) {
     document.addEventListener('mousemove', (e) => {
         gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1, ease: "power2.out", opacity: 1 });
         gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0, opacity: 1 });
@@ -73,75 +73,82 @@ if (!reducedMotion) {
 const navbar = document.getElementById('navbar');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-    if (currentScroll > 50) {
-        navbar.classList.add('shadow-lg');
-    } else {
-        navbar.classList.remove('shadow-lg');
-    }
+        if (currentScroll > 50) {
+            navbar.classList.add('shadow-lg');
+        } else {
+            navbar.classList.remove('shadow-lg');
+        }
 
-    lastScroll = currentScroll;
-});
+        lastScroll = currentScroll;
+    });
+}
 
 // Mobile Menu
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 let isMenuOpen = false;
-menuToggle.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
-    mobileMenu.setAttribute('aria-hidden', String(!isMenuOpen));
 
-    if (isMenuOpen) {
-        mobileMenu.style.transform = "translateX(0)";
-        document.body.style.overflow = "hidden"; // Prevent scrolling
-        gsap.from(mobileLinks, {
-            y: 50,
-            opacity: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            delay: 0.3
-        });
-        menuToggle.innerHTML = '<i class="fas fa-times text-xl md:text-2xl"></i>';
-        // move focus to first mobile link for keyboard users
-        setTimeout(() => {
-            const first = mobileLinks[0];
-            if (first && typeof first.focus === 'function') first.focus();
-        }, 350);
-    } else {
-        mobileMenu.style.transform = "translateX(100%)";
-        document.body.style.overflow = "";
-        menuToggle.innerHTML = '<i class="fas fa-bars text-xl md:text-2xl"></i>';
-        // return focus to the toggle
-        menuToggle.focus();
-    }
-});
+if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
+        mobileMenu.setAttribute('aria-hidden', String(!isMenuOpen));
 
-// Close menu on link click
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        isMenuOpen = false;
-        mobileMenu.style.transform = "translateX(100%)";
-        document.body.style.overflow = "";
-        menuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+        if (isMenuOpen) {
+            mobileMenu.style.transform = "translateX(0)";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+            gsap.from(mobileLinks, {
+                y: 50,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.1,
+                delay: 0.3
+            });
+            menuToggle.innerHTML = '<i class="fas fa-times text-xl md:text-2xl"></i>';
+            // move focus to first mobile link for keyboard users
+            setTimeout(() => {
+                const first = mobileLinks[0];
+                if (first && typeof first.focus === 'function') first.focus();
+            }, 350);
+        } else {
+            mobileMenu.style.transform = "translateX(100%)";
+            document.body.style.overflow = "";
+            menuToggle.innerHTML = '<i class="fas fa-bars text-xl md:text-2xl"></i>';
+            // return focus to the toggle
+            menuToggle.focus();
+        }
     });
-});
+
+    // Close menu on link click
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            isMenuOpen = false;
+            mobileMenu.style.transform = "translateX(100%)";
+            document.body.style.overflow = "";
+            menuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+        });
+    });
+}
 
 // Back to Top Logic
 const backToTopBtn = document.getElementById('back-to-top');
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
-        backToTopBtn.classList.add('translate-y-0', 'opacity-100');
-    } else {
-        backToTopBtn.classList.add('translate-y-20', 'opacity-0');
-        backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
-    }
-});
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+            backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+        } else {
+            backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+            backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+        }
+    });
+}
 
 // Generic Reveal Animations (Replacing AOS with GSAP)
 const revealElements = document.querySelectorAll("[data-aos]");
