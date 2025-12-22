@@ -30,6 +30,9 @@ if (window.matchMedia("(min-width: 768px)").matches && cursor && cursorDot) {
 }
 
 // Hero Animation
+// Hero Animation
+let heroTimeline;
+
 if (!reducedMotion) {
     // split headline into characters for a refined entrance
     function splitIntoChars(selector) {
@@ -47,7 +50,7 @@ if (!reducedMotion) {
 
     splitIntoChars('.hero-headline');
 
-    const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" }, paused: true });
     heroTimeline
         .from('.hero-headline .char', { y: 28, opacity: 0, duration: 0.9, stagger: 0.03 })
         .from('.hero-sub', { y: 18, opacity: 0, duration: 0.7 }, '-=0.55')
@@ -180,3 +183,83 @@ revealElements.forEach((element) => {
 });
 
 console.log('Portfolio initialized successfully with GSAP animations');
+
+// Preloader Logic
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Minimum display time of 1s to show off the animation
+        setTimeout(() => {
+            gsap.to(preloader, {
+                opacity: 0,
+                duration: 0.8,
+                onComplete: () => {
+                    preloader.style.display = 'none';
+                    // Trigger hero animations after preloader is gone
+                    if (typeof heroTimeline !== 'undefined') heroTimeline.play();
+                }
+            });
+        }, 1000);
+    }
+});
+
+// Magnetic Buttons
+const magneticBtns = document.querySelectorAll('.magnetic-btn');
+magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(btn, {
+            x: x * 0.3, // Strength of magnet
+            y: y * 0.3,
+            duration: 0.6,
+            ease: "power3.out"
+        });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
+});
+
+// 3D Tilt Effect for Project Cards
+const projectCards = document.querySelectorAll('.group.relative.bg-black'); // Targeting the cards
+projectCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Calculate center
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Calculate rotation (max 10 degrees)
+        const rotateX = ((y - centerY) / centerY) * -5; // Invert for natural tilt
+        const rotateY = ((x - centerX) / centerX) * 5;
+
+        gsap.to(card, {
+            rotationX: rotateX,
+            rotationY: rotateY,
+            transformPerspective: 1000,
+            duration: 0.4,
+            ease: "power2.out"
+        });
+    });
+
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+            rotationX: 0,
+            rotationY: 0,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+    });
+});

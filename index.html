@@ -48,6 +48,24 @@
         </div>
     </noscript>
 
+    <!-- Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 z-[10000] bg-black flex items-center justify-center transition-opacity duration-500">
+        <div class="relative">
+            <div class="text-gold-500 font-playfair text-4xl md:text-6xl font-bold tracking-wider animate-pulse">VA
+            </div>
+            <div class="absolute -inset-8 border border-white/10 rounded-full animate-spin-slow"></div>
+            <div class="absolute -inset-16 border border-gold-500/10 rounded-full animate-spin-reverse-slow"></div>
+        </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="fixed inset-0 z-[9998] pointer-events-none opacity-[0.03] mix-blend-overlay">
+        <div class="absolute inset-0 bg-repeat bg-center"
+            style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');">
+        </div>
+    </div>
+
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Custom Cursor (Optional, implemented in CSS/JS) -->
@@ -64,7 +82,7 @@
         <div class="absolute inset-0 bg-black/90 backdrop-blur-md border-b border-white/10"></div>
         <div class="container relative mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="#home" class="z-[110] relative group">
+            <a href="#home" class="z-[110] relative group magnetic-btn">
                 <img src="/src/assets/images/logo.png" alt="Vincent Agber"
                     class="h-8 md:h-10 hover:scale-110 transition-transform duration-300">
             </a>
@@ -72,20 +90,20 @@
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about"
-                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">About</a>
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors magnetic-btn">About</a>
                 <a href="#expertise"
-                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">Expertise</a>
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors magnetic-btn">Expertise</a>
                 <a href="#work"
-                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">Work</a>
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors magnetic-btn">Work</a>
                 <a href="#testimonials"
-                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors">Testimonials</a>
+                    class="nav-link text-sm font-medium text-white hover:text-gold-500 transition-colors magnetic-btn">Testimonials</a>
                 <a href="#contact"
-                    class="px-6 py-2 border border-gold-500 text-gold-500 text-sm font-medium rounded-full hover:bg-gold-500 hover:text-white transition-all duration-300">Let's
+                    class="px-6 py-2 border border-gold-500 text-gold-500 text-sm font-medium rounded-full hover:bg-gold-500 hover:text-white transition-all duration-300 magnetic-btn">Let's
                     Talk</a>
             </div>
 
             <!-- Mobile Toggle -->
-            <button id="menu-toggle" class="md:hidden z-[110] text-white focus:outline-none relative p-2"
+            <button id="menu-toggle" class="md:hidden z-[110] text-white focus:outline-none relative p-2 magnetic-btn"
                 aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
                 <i class="fas fa-bars text-xl md:text-2xl"></i>
             </button>
@@ -526,37 +544,68 @@
             </div>
         </section>
 
-        <!-- Clients / Trusted By Section (Restored) -->
-        <section class="py-16 bg-white text-dark-300 overflow-hidden">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-xl font-bold uppercase tracking-widest mb-10 text-black/60">Trusted By Forward-Thinking
-                    Brands</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-                    <!-- Placeholders to map real images manually if file names are tricky, assuming standard names -->
-                    <img src="/src/assets/images/clients/BuddieTrip.com-logo.png" alt="Client"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/julius.png" alt="Client"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/haqq.png" alt="Client"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/billionaire.png" alt="Client"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/arose-logo.png" alt="Client"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/superlinkit.png" alt="Client"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/hopesalive-logo.png" alt="Hopes Alive Initiative"
-                        class="w-full h-12 object-contain transition-all">
+        <!-- Clients / Trusted By Section (Infinite Marquee) -->
+        <section class="py-16 bg-white text-dark-300 overflow-hidden relative">
+            <div class="container mx-auto px-6 text-center mb-10">
+                <h2 class="text-xl font-bold uppercase tracking-widest text-black/60">Trusted By Forward-Thinking Brands
+                </h2>
+            </div>
+
+            <div class="marquee-container relative w-full overflow-hidden">
+                <div class="marquee-content flex gap-12 items-center animate-marquee whitespace-nowrap">
+                    <!-- Set 1 -->
+                    <img src="/src/assets/images/clients/BuddieTrip.com-logo.png" alt="BuddieTrip"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/julius.png" alt="Julius"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/haqq.png" alt="Haqq"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/billionaire.png" alt="Billionaire"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/arose-logo.png" alt="Arose"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/superlinkit.png" alt="SuperLinkIt"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/hopesalive-logo.png" alt="Hopes Alive"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
                     <img src="/src/assets/images/clients/shelevate-logo.png" alt="ShElevate"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/geoponts-logo.png" alt="Geoponts Properties"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/priorityplus-logo.png" alt="Priority Plus Health Care"
-                        class="w-full h-12 object-contain transition-all">
-                    <img src="/src/assets/images/clients/uavtech-logo.png" alt="UAV College of Technology"
-                        class="w-full h-12 object-contain transition-all">
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/geoponts-logo.png" alt="Geoponts"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/priorityplus-logo.png" alt="Priority Plus"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/uavtech-logo.png" alt="UAV Tech"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+
+                    <!-- Set 2 (Duplicate for seamless scroll) -->
+                    <img src="/src/assets/images/clients/BuddieTrip.com-logo.png" alt="BuddieTrip"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/julius.png" alt="Julius"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/haqq.png" alt="Haqq"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/billionaire.png" alt="Billionaire"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/arose-logo.png" alt="Arose"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/superlinkit.png" alt="SuperLinkIt"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/hopesalive-logo.png" alt="Hopes Alive"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/shelevate-logo.png" alt="ShElevate"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/geoponts-logo.png" alt="Geoponts"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/priorityplus-logo.png" alt="Priority Plus"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <img src="/src/assets/images/clients/uavtech-logo.png" alt="UAV Tech"
+                        class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
                 </div>
             </div>
+
+            <!-- Fade edges -->
+            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
         </section>
 
         <!-- Experience Section -->
