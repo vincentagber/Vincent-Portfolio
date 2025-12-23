@@ -281,12 +281,6 @@
     padding-top: 5rem;
   }
 
-  /* Mobile font size adjustments */
-  .hero-headline {
-    font-size: 2.5rem !important;
-    line-height: 1.2 !important;
-  }
-
   /* Mobile buttons */
   .btn-focus {
     padding: 0.75rem 1.5rem !important;
@@ -352,9 +346,6 @@
 @media (max-width: 480px) {
 
   /* Extra small mobile devices */
-  .hero-headline {
-    font-size: 2rem !important;
-  }
 
   /* Smaller buttons for tiny screens */
   .btn-focus {
