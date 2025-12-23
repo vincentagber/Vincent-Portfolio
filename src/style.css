@@ -366,12 +366,6 @@
   footer {
     font-size: 0.875rem;
   }
-
-  /* Mobile stats grid */
-  .grid-cols-3 {
-    grid-template-columns: 1fr;
-    gap: 1rem !important;
-  }
 }
 
 /* Infinite Marquee Animation */
