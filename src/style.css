@@ -269,6 +269,127 @@
   z-index: 9999;
 }
 
+/* --- Screenshot Inspired Header --- */
+#navbar {
+  @apply fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-[100] h-20 transition-all duration-300 flex items-center;
+}
+
+#navbar.scrolled {
+  @apply h-16 shadow-md;
+}
+
+.nav-container {
+  @apply container mx-auto px-6 h-full flex items-center justify-between;
+}
+
+.nav-menu {
+  @apply hidden lg:flex items-center space-x-1;
+}
+
+.nav-item {
+  @apply flex items-center gap-2 text-[#444] font-semibold py-2 px-4 transition-all duration-300 hover:text-gold-500 text-[15px];
+}
+
+.nav-item i {
+  @apply text-lg opacity-80;
+}
+
+.nav-item.active {
+  @apply text-gold-500 relative;
+}
+
+.nav-item.active::after {
+  @apply content-[''] absolute bottom-[-4px] left-4 right-4 h-[3px] bg-gold-500 rounded-full;
+}
+
+.cta-apply {
+  @apply bg-cyan-500 text-white font-bold h-full px-8 flex items-center justify-center transition-all duration-300 hover:bg-cyan-600 uppercase tracking-wider text-sm whitespace-nowrap;
+}
+
+/* Updated Hamburger Design from Screenshot */
+.hamburger-box {
+  @apply border-2 border-gray-300 rounded-lg w-12 h-10 flex items-center justify-center relative cursor-pointer;
+}
+
+.hamburger-inner {
+  @apply w-6 h-[2px] bg-gray-600 rounded-full absolute transition-all duration-300;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  @apply content-[''] w-6 h-[2px] bg-gray-600 rounded-full absolute transition-all duration-300;
+}
+
+.hamburger-inner::before {
+  @apply top-[-8px];
+}
+
+.hamburger-inner::after {
+  @apply bottom-[-8px];
+}
+
+#menu-toggle.is-active .hamburger-inner {
+  @apply bg-transparent;
+}
+
+#menu-toggle.is-active .hamburger-inner::before {
+  @apply top-0 rotate-45;
+}
+
+#menu-toggle.is-active .hamburger-inner::after {
+  @apply bottom-0 -rotate-45;
+}
+
+/* Mobile Menu - Left Flip/Slide Design */
+#mobile-menu {
+  @apply fixed inset-0 bg-black/40 z-[90] transition-opacity duration-500 opacity-0 pointer-events-none backdrop-blur-sm;
+}
+
+#mobile-menu.active {
+  @apply opacity-100 pointer-events-auto;
+}
+
+.mobile-panel {
+  @apply fixed top-0 left-0 h-full w-[300px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-500 flex flex-col pt-24 pb-10 px-0;
+}
+
+#mobile-menu.active .mobile-panel {
+  @apply translate-x-0;
+}
+
+.mobile-nav-item {
+  @apply flex items-center gap-4 text-[#333] font-bold text-lg py-4 px-8 border-b border-gray-50 transition-colors hover:bg-gray-50 hover:text-gold-500;
+}
+
+.mobile-nav-item i {
+  @apply text-gray-400 w-6 text-center text-xl transition-colors;
+}
+
+.mobile-nav-item:hover i,
+.mobile-nav-item.active i {
+  @apply text-gold-500;
+}
+
+.mobile-nav-item.active {
+  @apply text-gold-500 bg-gold-50/10 relative;
+}
+
+.mobile-nav-item.active::after {
+  @apply content-[''] absolute left-0 top-0 w-1 h-full bg-gold-500;
+}
+
+.mobile-footer {
+  @apply mt-auto px-8 pt-6;
+}
+
+.mobile-cta {
+  @apply bg-cyan-500 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 uppercase tracking-widest text-sm shadow-lg shadow-cyan-500/20 active:scale-95 transition-all w-full mb-6;
+}
+
+.flag-icon {
+  @apply w-8 h-auto rounded-sm;
+}
+
 /* Mobile Responsive Enhancements */
 @media (max-width: 768px) {
 
@@ -293,127 +414,6 @@
   /* Mobile grid adjustments */
   .grid {
     gap: 1rem !important;
-  }
-
-  /* --- Screenshot Inspired Header --- */
-  #navbar {
-    @apply fixed top-0 left-0 w-full bg-white border-b border-gray-100 z-[100] h-20 transition-all duration-300 flex items-center;
-  }
-
-  #navbar.scrolled {
-    @apply h-16 shadow-md;
-  }
-
-  .nav-container {
-    @apply container mx-auto px-6 h-full flex items-center justify-between;
-  }
-
-  .nav-menu {
-    @apply hidden lg:flex items-center space-x-1;
-  }
-
-  .nav-item {
-    @apply flex items-center gap-2 text-[#444] font-semibold py-2 px-4 transition-all duration-300 hover:text-cyan-500 text-[15px];
-  }
-
-  .nav-item i {
-    @apply text-lg opacity-80;
-  }
-
-  .nav-item.active {
-    @apply text-cyan-500 relative;
-  }
-
-  .nav-item.active::after {
-    @apply content-[''] absolute bottom-[-4px] left-4 right-4 h-[3px] bg-cyan-500 rounded-full;
-  }
-
-  .cta-apply {
-    @apply bg-cyan-500 text-white font-bold h-full px-8 flex items-center justify-center transition-all duration-300 hover:bg-cyan-600 uppercase tracking-wider text-sm whitespace-nowrap;
-  }
-
-  /* Updated Hamburger Design from Screenshot */
-  .hamburger-box {
-    @apply border-2 border-gray-300 rounded-lg w-12 h-10 flex items-center justify-center relative cursor-pointer;
-  }
-
-  .hamburger-inner {
-    @apply w-6 h-[2px] bg-gray-600 rounded-full absolute transition-all duration-300;
-  }
-
-  .hamburger-inner::before,
-  .hamburger-inner::after {
-    @apply content-[''] w-6 h-[2px] bg-gray-600 rounded-full absolute transition-all duration-300;
-  }
-
-  .hamburger-inner::before {
-    @apply top-[-8px];
-  }
-
-  .hamburger-inner::after {
-    @apply bottom-[-8px];
-  }
-
-  #menu-toggle.is-active .hamburger-inner {
-    @apply bg-transparent;
-  }
-
-  #menu-toggle.is-active .hamburger-inner::before {
-    @apply top-0 rotate-45;
-  }
-
-  #menu-toggle.is-active .hamburger-inner::after {
-    @apply bottom-0 -rotate-45;
-  }
-
-  /* Mobile Menu - Left Flip/Slide Design */
-  #mobile-menu {
-    @apply fixed inset-0 bg-black/40 z-[90] transition-opacity duration-500 opacity-0 pointer-events-none backdrop-blur-sm;
-  }
-
-  #mobile-menu.active {
-    @apply opacity-100 pointer-events-auto;
-  }
-
-  .mobile-panel {
-    @apply fixed top-0 left-0 h-full w-[300px] bg-white shadow-2xl transform -translate-x-full transition-transform duration-500 flex flex-col pt-24 pb-10 px-0;
-  }
-
-  #mobile-menu.active .mobile-panel {
-    @apply translate-x-0;
-  }
-
-  .mobile-nav-item {
-    @apply flex items-center gap-4 text-[#333] font-bold text-lg py-4 px-8 border-b border-gray-50 transition-colors hover:bg-gray-50 hover:text-cyan-500;
-  }
-
-  .mobile-nav-item i {
-    @apply text-gray-400 w-6 text-center text-xl transition-colors;
-  }
-
-  .mobile-nav-item:hover i,
-  .mobile-nav-item.active i {
-    @apply text-cyan-500;
-  }
-
-  .mobile-nav-item.active {
-    @apply text-cyan-500 bg-cyan-50/50 relative;
-  }
-
-  .mobile-nav-item.active::after {
-    @apply content-[''] absolute left-0 top-0 w-1 h-full bg-cyan-500;
-  }
-
-  .mobile-footer {
-    @apply mt-auto px-8 pt-6;
-  }
-
-  .mobile-cta {
-    @apply bg-cyan-500 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 uppercase tracking-widest text-sm shadow-lg shadow-cyan-500/20 active:scale-95 transition-all w-full mb-6;
-  }
-
-  .flag-icon {
-    @apply w-8 h-auto rounded-sm;
   }
 
   /* Ensure hamburger menu is clickable */
