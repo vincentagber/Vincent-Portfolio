@@ -81,49 +81,47 @@ if (navbar) {
         const currentScroll = window.pageYOffset;
 
         if (currentScroll > 50) {
-            navbar.classList.add('shadow-lg');
+            navbar.classList.add('scrolled');
         } else {
-            navbar.classList.remove('shadow-lg');
+            navbar.classList.remove('scrolled');
         }
 
         lastScroll = currentScroll;
     });
 }
 
-// Mobile Menu
+// Mobile Menu Logic
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
+const revealSocial = document.querySelector('.reveal-social');
 let isMenuOpen = false;
 
 if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
+
+        // Toggle Hamburger Animation
+        menuToggle.classList.toggle('is-active', isMenuOpen);
         menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
         mobileMenu.setAttribute('aria-hidden', String(!isMenuOpen));
 
         if (isMenuOpen) {
-            mobileMenu.style.transform = "translateX(0)";
+            mobileMenu.style.transform = "translateY(0)";
             document.body.style.overflow = "hidden"; // Prevent scrolling
-            gsap.from(mobileLinks, {
-                y: 50,
-                opacity: 0,
-                duration: 0.5,
-                stagger: 0.1,
-                delay: 0.3
-            });
-            menuToggle.innerHTML = '<i class="fas fa-times text-xl md:text-2xl"></i>';
-            // move focus to first mobile link for keyboard users
-            setTimeout(() => {
-                const first = mobileLinks[0];
-                if (first && typeof first.focus === 'function') first.focus();
-            }, 350);
+
+            // Staggered Flip Animation for Mobile Links
+            gsap.fromTo(mobileLinks,
+                { y: 100, opacity: 0, rotationX: -90 },
+                { y: 0, opacity: 1, rotationX: 0, duration: 0.8, stagger: 0.1, delay: 0.3, ease: "power4.out" }
+            );
+
+            // Reveal Social Icons
+            gsap.to(revealSocial, { opacity: 1, y: 0, duration: 0.5, delay: 0.8 });
         } else {
-            mobileMenu.style.transform = "translateX(100%)";
+            mobileMenu.style.transform = "translateY(100%)";
             document.body.style.overflow = "";
-            menuToggle.innerHTML = '<i class="fas fa-bars text-xl md:text-2xl"></i>';
-            // return focus to the toggle
-            menuToggle.focus();
+            gsap.set(revealSocial, { opacity: 0 });
         }
     });
 
@@ -131,9 +129,10 @@ if (menuToggle && mobileMenu) {
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             isMenuOpen = false;
-            mobileMenu.style.transform = "translateX(100%)";
+            mobileMenu.style.transform = "translateY(100%)";
             document.body.style.overflow = "";
-            menuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            menuToggle.classList.remove('is-active');
+            gsap.set(revealSocial, { opacity: 0 });
         });
     });
 }

@@ -292,9 +292,119 @@
     gap: 1rem !important;
   }
 
-  /* Mobile navigation - Updated */
-  #navbar {
-    height: 4rem;
+  /* --- New Header & Mobile Menu Styles --- */
+  #navbar.scrolled {
+    @apply py-3 bg-black/80 backdrop-blur-xl border-b border-white/10;
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-gold-500);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Updated Hamburger Design */
+  .hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    content: "";
+    display: block;
+  }
+
+  .hamburger-inner::before {
+    top: -10px;
+  }
+
+  .hamburger-inner::after {
+    bottom: -10px;
+  }
+
+  /* Hamburger Animation (Active State) */
+  #menu-toggle.is-active .hamburger-inner {
+    transform: rotate(45deg);
+  }
+
+  #menu-toggle.is-active .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+  }
+
+  #menu-toggle.is-active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+  }
+
+  /* Mobile Flip Panel Styles */
+  .mobile-link-wrapper {
+    perspective: 1000px;
+  }
+
+  .mobile-link {
+    display: block;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .mobile-link:hover {
+    transform: rotateX(10deg);
+  }
+
+  /* Glassmorphic Nav Bar */
+  .glass-nav {
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    margin: 1rem auto;
+    max-width: 90%;
+    padding: 0.5rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .glass-nav {
+      max-width: 95%;
+      padding: 0.5rem 1rem;
+      margin: 0.75rem auto;
+    }
   }
 
   /* Ensure hamburger menu is clickable */
