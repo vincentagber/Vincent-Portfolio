@@ -93,47 +93,46 @@ if (navbar) {
 // Mobile Menu Logic
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-const revealSocial = document.querySelector('.reveal-social');
+const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
 let isMenuOpen = false;
 
 if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
 
-        // Toggle Hamburger Animation
+        // Toggle Classes
         menuToggle.classList.toggle('is-active', isMenuOpen);
-        menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
-        mobileMenu.setAttribute('aria-hidden', String(!isMenuOpen));
+        mobileMenu.classList.toggle('active', isMenuOpen);
 
         if (isMenuOpen) {
-            mobileMenu.style.transform = "translateY(0)";
             document.body.style.overflow = "hidden"; // Prevent scrolling
-
-            // Staggered Flip Animation for Mobile Links
-            gsap.fromTo(mobileLinks,
-                { y: 100, opacity: 0, rotationX: -90 },
-                { y: 0, opacity: 1, rotationX: 0, duration: 0.8, stagger: 0.1, delay: 0.3, ease: "power4.out" }
-            );
-
-            // Reveal Social Icons
-            gsap.to(revealSocial, { opacity: 1, y: 0, duration: 0.5, delay: 0.8 });
         } else {
-            mobileMenu.style.transform = "translateY(100%)";
             document.body.style.overflow = "";
-            gsap.set(revealSocial, { opacity: 0 });
         }
     });
 
     // Close menu on link click
-    mobileLinks.forEach(link => {
+    mobileNavItems.forEach(link => {
         link.addEventListener('click', () => {
             isMenuOpen = false;
-            mobileMenu.style.transform = "translateY(100%)";
-            document.body.style.overflow = "";
+            mobileMenu.classList.remove('active');
             menuToggle.classList.remove('is-active');
-            gsap.set(revealSocial, { opacity: 0 });
+            document.body.style.overflow = "";
+
+            // Highlight active link
+            mobileNavItems.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
         });
+    });
+
+    // Close menu when clicking outside the panel
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+            isMenuOpen = false;
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('is-active');
+            document.body.style.overflow = "";
+        }
     });
 }
 
