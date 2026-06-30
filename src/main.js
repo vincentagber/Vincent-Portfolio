@@ -36,16 +36,19 @@ let heroTimeline;
 if (!reducedMotion) {
     // split headline into characters for a refined entrance
     function splitIntoChars(selector) {
-        const el = document.querySelector(selector);
-        if (!el) return;
-        const text = el.textContent.trim();
-        el.setAttribute('aria-label', text);
-        el.innerHTML = text.split('').map(char => {
-            if (char === ' ') return '<span class="char">&nbsp;</span>';
-            return `<span class="char">${char}</span>`;
-        }).join('');
+        const parent = document.querySelector(selector);
+        if (!parent) return;
+        parent.querySelectorAll(':scope > span').forEach(span => {
+            const text = span.textContent.trim();
+            if (!text) return;
+            span.setAttribute('aria-label', text);
+            span.innerHTML = text.split('').map(char => {
+                if (char === ' ') return '<span class="char">&nbsp;</span>';
+                return `<span class="char">${char}</span>`;
+            }).join('');
+        });
         // make sure chars are inline-block for animation
-        el.querySelectorAll('.char').forEach(c => c.style.display = 'inline-block');
+        parent.querySelectorAll('.char').forEach(c => c.style.display = 'inline-block');
     }
 
     splitIntoChars('.hero-headline');
@@ -58,7 +61,7 @@ if (!reducedMotion) {
 
 } else {
     // If reduced motion preferred, ensure elements are visible
-    document.querySelectorAll('.reveal-hero').forEach(el => el.style.opacity = 1);
+    document.querySelectorAll('.hero-headline, .hero-sub, .reveal-hero').forEach(el => el.style.opacity = 1);
 }
 
 // Navigation Logic
@@ -187,8 +190,18 @@ window.addEventListener('load', () => {
                 }
             });
         }, 1000);
+    } else {
+        // No preloader found — show hero elements immediately
+        if (typeof heroTimeline !== 'undefined') heroTimeline.play();
     }
 });
+
+// Safety net: show hero elements after 3s even if animation didn't trigger
+setTimeout(() => {
+    if (heroTimeline && heroTimeline.progress() < 1) {
+        document.querySelectorAll('.hero-headline, .hero-sub, .reveal-hero').forEach(el => el.style.opacity = 1);
+    }
+}, 3000);
 
 // Magnetic Buttons
 const magneticBtns = document.querySelectorAll('.magnetic-btn');
