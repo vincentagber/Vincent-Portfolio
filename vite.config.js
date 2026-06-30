@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    root: './', // Root is the project root since index.html is there for now
+    root: './',
     build: {
         outDir: 'dist',
     },
     server: {
         open: true,
-    }
+    },
 });

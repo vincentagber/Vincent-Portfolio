@@ -56,17 +56,6 @@ if (!reducedMotion) {
         .from('.hero-sub', { y: 18, opacity: 0, duration: 0.7 }, '-=0.55')
         .from('.reveal-hero', { y: 16, opacity: 0, duration: 0.6, stagger: 0.1 }, '-=0.45');
 
-    // subtle parallax for illustration tied to scroll
-    gsap.to('.hero-illustration', {
-        y: -30,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '#home',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 0.6
-        }
-    });
 } else {
     // If reduced motion preferred, ensure elements are visible
     document.querySelectorAll('.reveal-hero').forEach(el => el.style.opacity = 1);
